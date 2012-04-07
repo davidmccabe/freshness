@@ -1,18 +1,18 @@
 //
-//  DMFirstViewController.m
+//  DMSecondViewController.m
 //  Lastid
 //
 //  Created by David McCabe on 4/7/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "DMFirstViewController.h"
+#import "DMLookupViewController.h"
 
-@interface DMFirstViewController ()
+@interface DMLookupViewController ()
 
 @end
 
-@implementation DMFirstViewController
+@implementation DMLookupViewController
 
 - (void)viewDidLoad
 {

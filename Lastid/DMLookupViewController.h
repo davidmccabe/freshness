@@ -1,5 +1,5 @@
 //
-//  DMFirstViewController.h
+//  DMSecondViewController.h
 //  Lastid
 //
 //  Created by David McCabe on 4/7/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMFirstViewController : UIViewController
+@interface DMLookupViewController : UIViewController
 
 @end
