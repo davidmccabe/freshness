@@ -20,6 +20,9 @@
 		6361D9BD1530EA4900309770 /* DMLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9BC1530EA4900309770 /* DMLookupViewController.m */; };
 		6361D9BF1530EA4900309770 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9BE1530EA4900309770 /* second.png */; };
 		6361D9C11530EA4900309770 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9C01530EA4900309770 /* second@2x.png */; };
+		6361D9C91530FE0800309770 /* Lastid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */; };
+		6361D9CC1530FE6F00309770 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9CB1530FE6F00309770 /* Food.m */; };
+		6361D9CE1531017F00309770 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9CD1531017F00309770 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,10 @@
 		6361D9BC1530EA4900309770 /* DMLookupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMLookupViewController.m; sourceTree = "<group>"; };
 		6361D9BE1530EA4900309770 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		6361D9C01530EA4900309770 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		6361D9C81530FE0800309770 /* Lastid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lastid.xcdatamodel; sourceTree = "<group>"; };
+		6361D9CA1530FE6F00309770 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		6361D9CB1530FE6F00309770 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		6361D9CD1531017F00309770 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6361D9CE1531017F00309770 /* CoreData.framework in Frameworks */,
 				6361D9A01530EA4900309770 /* UIKit.framework in Frameworks */,
 				6361D9A21530EA4900309770 /* Foundation.framework in Frameworks */,
 				6361D9A41530EA4900309770 /* CoreGraphics.framework in Frameworks */,
@@ -61,6 +69,7 @@
 		6361D9901530EA4900309770 = {
 			isa = PBXGroup;
 			children = (
+				6361D9CD1531017F00309770 /* CoreData.framework */,
 				6361D9A51530EA4900309770 /* Lastid */,
 				6361D99E1530EA4900309770 /* Frameworks */,
 				6361D99C1530EA4900309770 /* Products */,
@@ -88,6 +97,8 @@
 		6361D9A51530EA4900309770 /* Lastid */ = {
 			isa = PBXGroup;
 			children = (
+				6361D9CA1530FE6F00309770 /* Food.h */,
+				6361D9CB1530FE6F00309770 /* Food.m */,
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
 				6361D9AF1530EA4900309770 /* DMAppDelegate.m */,
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
@@ -111,6 +122,7 @@
 				6361D9A81530EA4900309770 /* InfoPlist.strings */,
 				6361D9AB1530EA4900309770 /* main.m */,
 				6361D9AD1530EA4900309770 /* Lastid-Prefix.pch */,
+				6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,6 +198,8 @@
 				6361D9B01530EA4900309770 /* DMAppDelegate.m in Sources */,
 				6361D9B61530EA4900309770 /* DMDictationViewController.m in Sources */,
 				6361D9BD1530EA4900309770 /* DMLookupViewController.m in Sources */,
+				6361D9C91530FE0800309770 /* Lastid.xcdatamodeld in Sources */,
+				6361D9CC1530FE6F00309770 /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +313,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6361D9C81530FE0800309770 /* Lastid.xcdatamodel */,
+			);
+			currentVersion = 6361D9C81530FE0800309770 /* Lastid.xcdatamodel */;
+			path = Lastid.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6361D9921530EA4900309770 /* Project object */;
 }
