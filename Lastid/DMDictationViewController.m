@@ -60,4 +60,17 @@
     [self.entryView becomeFirstResponder];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"ShowLookUp"]) {
+        DMLookupViewController *viewController = segue.destinationViewController;
+        viewController.delegate = self;
+	}
+}
+
+- (void)lookupViewControllerDidFinish:(DMLookupViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

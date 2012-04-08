@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMLookupViewController : UITableViewController
+@class DMLookupViewController;
 
+@protocol DMLookupViewControllerDelegate <NSObject>
+- (void)lookupViewControllerDidFinish:(DMLookupViewController *)controller;
+@end
+
+@interface DMLookupViewController : UITableViewController
+- (IBAction)addFoodsPressed:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) id <DMLookupViewControllerDelegate> delegate;
 @end

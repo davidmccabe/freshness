@@ -15,6 +15,8 @@
 
 @implementation DMLookupViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,4 +64,8 @@
     return [dateFormatter stringFromDate:theDate];
 }
 
+- (IBAction)addFoodsPressed:(UIBarButtonItem *)sender
+{
+    [self.delegate lookupViewControllerDidFinish:self];
+}
 @end

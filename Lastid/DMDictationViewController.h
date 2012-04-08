@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DMLookupViewController.h"
 
-@interface DMDictationViewController : UIViewController <UITextViewDelegate>
+@interface DMDictationViewController : UIViewController <UITextViewDelegate, DMLookupViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *entryView;
-
 @end
