@@ -7,6 +7,7 @@
 //
 
 #import "DMDictationViewController.h"
+#import "Food.h"
 
 @interface DMDictationViewController ()
 - (void)entryDidFinish;
@@ -47,6 +48,10 @@
 
 - (void)entryDidFinish {
     [self.entryView resignFirstResponder];
+    NSArray *tokens = [self.entryView.text componentsSeparatedByString:@" "];
+    for (NSString *token in tokens) {
+        [Food enterFoodWithName:token];
+    }
 }
 
 @end
