@@ -7,6 +7,7 @@
 //
 
 #import "DMLookupViewController.h"
+#import "Food.h"
 
 @interface DMLookupViewController ()
 
@@ -29,6 +30,25 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [Food MR_countOfEntities];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
+	Food *food = [[Food MR_findAllSortedBy:@"lastAdded" ascending:YES] objectAtIndex:indexPath.row];
+	cell.textLabel.text = food.name;
+	cell.detailTextLabel.text = [food.lastAdded description];
+    return cell;
 }
 
 @end

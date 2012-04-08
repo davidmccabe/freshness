@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMLookupViewController : UIViewController
+@interface DMLookupViewController : UITableViewController
 
 @end
