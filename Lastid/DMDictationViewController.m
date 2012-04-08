@@ -52,6 +52,7 @@
     for (NSString *token in tokens) {
         [Food enterFoodWithName:token];
     }
+    [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
 @end
