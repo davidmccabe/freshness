@@ -42,7 +42,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Lastid" id="lQv-gD-EPA">
-                                        <barButtonItem key="rightBarButtonItem" title="Look Up" id="jGC-KC-KS0">
+                                        <barButtonItem key="rightBarButtonItem" title="History" id="jGC-KC-KS0">
                                             <connections>
                                                 <segue destination="i8D-0e-w3J" kind="modal" identifier="ShowLookUp" modalTransitionStyle="flipHorizontal" id="x0o-Ex-pmh"/>
                                             </connections>
@@ -81,8 +81,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Look Up" id="RH0-sL-zoZ">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="E1x-RP-uw1">
+                                <navigationItem title="History" id="RH0-sL-zoZ">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="E1x-RP-uw1">
                                         <connections>
                                             <action selector="addFoodsPressed:" destination="i8D-0e-w3J" id="CxG-mJ-wv6"/>
                                         </connections>
