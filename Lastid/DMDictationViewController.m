@@ -55,4 +55,9 @@
     [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.entryView becomeFirstResponder];
+}
+
 @end
