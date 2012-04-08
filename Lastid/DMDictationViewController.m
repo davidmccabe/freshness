@@ -53,6 +53,8 @@
         [Food enterFoodWithName:token];
     }
     [[NSManagedObjectContext MR_defaultContext] save:NULL];
+    
+    self.entryView.text = @"";
 }
 
 - (void)viewDidAppear:(BOOL)animated
