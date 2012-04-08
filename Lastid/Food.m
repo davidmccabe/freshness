@@ -19,6 +19,7 @@
     Food *food = [Food MR_findFirstByAttribute:@"name" withValue:name];
     if (!food) {
         food = [Food MR_createEntity];
+        food.name = name;
     }
     [food setLastAdded:[NSDate date]];
     return food;
