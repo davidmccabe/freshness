@@ -45,10 +45,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
-	Food *food = [[Food MR_findAllSortedBy:@"lastAdded" ascending:YES] objectAtIndex:indexPath.row];
+	
+    Food *food = [[Food MR_findAllSortedBy:@"lastAdded" ascending:YES] objectAtIndex:indexPath.row];
 	cell.textLabel.text = food.name;
-	cell.detailTextLabel.text = [food.lastAdded description];
+	cell.detailTextLabel.text = [self labelStringForDate:food.lastAdded];
+    
     return cell;
+}
+
+- (NSString *)labelStringForDate:(NSDate *)theDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"dMMM" options:0 locale:[NSLocale currentLocale]];
+    [dateFormatter setDateFormat:formatString];
+
+    return [dateFormatter stringFromDate:theDate];
 }
 
 @end
