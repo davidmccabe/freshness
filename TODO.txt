@@ -7,3 +7,5 @@ Editing during review.
 Make navbars not scroll.
 
 Clean up input strings.
+
+Older entries get grey.
