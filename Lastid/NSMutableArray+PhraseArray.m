@@ -12,7 +12,11 @@
 
 + (NSMutableArray *)phraseArrayFromString:(NSString *)aString
 {
-    return [NSMutableArray arrayWithArray:[aString componentsSeparatedByString:@" "]];
+    NSCharacterSet *delimeters = [NSCharacterSet characterSetWithCharactersInString:@", \n\t"];
+    NSMutableArray *tokens = [NSMutableArray arrayWithArray:[aString componentsSeparatedByCharactersInSet:delimeters]];
+    [tokens removeObject:@""];
+    [tokens removeObject:@" "];
+    return tokens;
 }
 
 - (void)mergePhraseAtIndex:(NSUInteger)firstIndex withPhraseAtIndex:(NSUInteger)secondIndex
