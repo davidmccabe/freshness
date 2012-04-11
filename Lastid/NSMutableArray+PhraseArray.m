@@ -15,6 +15,7 @@
 {
     NSMutableArray *tokens = [NSMutableArray arrayWithArray:[aString componentsSeparatedByDelimiters]];
     [tokens mapUsingSelector:@selector(stringByTrimmingDelimiters)];
+    [tokens mapUsingSelector:@selector(capitalizedString)];
     [tokens filterUsingSelector:@selector(isOnlyDelimiters)];
     return tokens;
 }
