@@ -28,6 +28,33 @@
     self.phrases = [aString componentsSeparatedByString:@" "];
 }
 
+- (void)viewDidLoad
+{
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoinGesture:)];
+    recognizer.minimumPressDuration = 0.1;
+    recognizer.numberOfTouchesRequired = 2;
+    [self.tableView addGestureRecognizer:recognizer];
+}
+
+- (void)handleJoinGesture:(UIGestureRecognizer *)recognizer
+{
+    if (recognizer.state != UIGestureRecognizerStateEnded) return;
+    if (recognizer.numberOfTouches != 2) return;
+    
+    NSUInteger row1 = [[self.tableView indexPathForRowAtPoint:[recognizer locationOfTouch:0 inView:self.tableView]] row];
+    NSUInteger row2 = [[self.tableView indexPathForRowAtPoint:[recognizer locationOfTouch:1 inView:self.tableView]] row];
+    
+    BOOL rowsAreAdjacent = (row1 == row2 + 1) || (row2 == row1 + 1);
+    if (rowsAreAdjacent) {
+        [self mergeRowNumber:row1 withRowNumber:row2];
+    }
+}
+
+- (void)mergeRowNumber:(NSUInteger)row1 withRowNumber:(NSUInteger)row2
+{
+    NSLog(@"merging rows");
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
