@@ -9,6 +9,10 @@
 #import "DMDictationViewController.h"
 #import "Food.h"
 
+@protocol DMDelegator <NSObject>
+- (void)setDelegate:(id)theDelegate;
+@end
+
 @interface DMDictationViewController ()
 - (void)entryDidFinish;
 @property (copy, nonatomic) NSString *input;
@@ -61,7 +65,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [segue.destinationViewController setDelegate:self];
+    [(id <DMDelegator>)[segue.destinationViewController visibleViewController] setDelegate:self];
 }
 
 - (void)lookupViewControllerDidFinish:(DMLookupViewController *)controller
