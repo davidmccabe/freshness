@@ -39,6 +39,7 @@
 		6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EF153126F500309770 /* MRCoreDataAction.m */; };
 		6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9FF1535006E00309770 /* DMTokenizingViewController.m */; };
 		6361DA061535226B00309770 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6361DA051535226B00309770 /* TODO.txt */; };
+		6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,8 @@
 		6361D9FE1535006E00309770 /* DMTokenizingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTokenizingViewController.h; sourceTree = "<group>"; };
 		6361D9FF1535006E00309770 /* DMTokenizingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTokenizingViewController.m; sourceTree = "<group>"; };
 		6361DA051535226B00309770 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PhraseArray.h"; sourceTree = "<group>"; };
+		6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PhraseArray.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 		6361D9A51530EA4900309770 /* Lastid */ = {
 			isa = PBXGroup;
 			children = (
+				6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */,
+				6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */,
 				6361D9CA1530FE6F00309770 /* Food.h */,
 				6361D9CB1530FE6F00309770 /* Food.m */,
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
@@ -323,6 +328,7 @@
 				6361D9FC153126F600309770 /* MagicalRecordHelpers.m in Sources */,
 				6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */,
 				6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */,
+				6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

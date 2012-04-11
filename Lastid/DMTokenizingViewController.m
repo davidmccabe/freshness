@@ -7,6 +7,7 @@
 //
 
 #import "DMTokenizingViewController.h"
+#import "NSMutableArray+PhraseArray.h"
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
@@ -20,12 +21,7 @@
 - (void)setDelegate:(id<DMTokenizingViewControllerDelegate>)aDelegate
 {
     delegate = aDelegate;
-    [self setInitialPhrasesFromString: [delegate stringToBeTokenized]];
-}
-
-- (void)setInitialPhrasesFromString:(NSString *)aString
-{
-    self.phrases = [NSMutableArray arrayWithArray:[aString componentsSeparatedByString:@" "]];
+    self.phrases = [NSMutableArray phraseArrayFromString:[delegate stringToBeTokenized]];
 }
 
 - (void)viewDidLoad
@@ -54,13 +50,8 @@
 }
 
 - (void)mergeFirstRowNumber:(NSUInteger)row1 withSecondRowNumber:(NSUInteger)row2
-{
-    NSString *phrase1 = [self.phrases objectAtIndex:row1];
-    NSString *phrase2 = [self.phrases objectAtIndex:row2];
-    NSString *newPhrase = [NSString stringWithFormat:@"%@ %@", phrase1, phrase2];
-    
-    [self.phrases replaceObjectAtIndex:row1 withObject:newPhrase];
-    [self.phrases removeObjectAtIndex:row2];
+{    
+    [self.phrases mergePhraseAtIndex:row1 withPhraseAtIndex:row2];
     
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];

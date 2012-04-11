@@ -5,3 +5,5 @@ Indicate what happened when review is finished.
 Editing during review.
 
 Make navbars not scroll.
+
+Clean up input strings.
