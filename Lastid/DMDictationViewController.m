@@ -8,6 +8,7 @@
 
 #import "DMDictationViewController.h"
 #import "Food.h"
+#import "NSString+Utilities.h"
 
 @protocol DMDelegator <NSObject>
 - (void)setDelegate:(id)theDelegate;
@@ -45,7 +46,8 @@
     if (textView != self.entryView) return YES;
 
     if ([text isEqualToString:@"\n"]) {
-        [self entryDidFinish];
+        // The return key is unavoidably enabled when any text is entered, even whitespace, but we ignore whitespace.
+        if (![textView.text isBlank]) [self entryDidFinish];
         return NO;
     } else {
         return YES;

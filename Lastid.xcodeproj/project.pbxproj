@@ -40,6 +40,7 @@
 		6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9FF1535006E00309770 /* DMTokenizingViewController.m */; };
 		6361DA061535226B00309770 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6361DA051535226B00309770 /* TODO.txt */; };
 		6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */; };
+		6361DA131536273900309770 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA121536273900309770 /* NSString+Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,8 @@
 		6361DA051535226B00309770 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PhraseArray.h"; sourceTree = "<group>"; };
 		6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PhraseArray.m"; sourceTree = "<group>"; };
+		6361DA111536273900309770 /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
+		6361DA121536273900309770 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 			children = (
 				6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */,
 				6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */,
+				6361DA111536273900309770 /* NSString+Utilities.h */,
+				6361DA121536273900309770 /* NSString+Utilities.m */,
 				6361D9CA1530FE6F00309770 /* Food.h */,
 				6361D9CB1530FE6F00309770 /* Food.m */,
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
@@ -329,6 +334,7 @@
 				6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */,
 				6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */,
 				6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */,
+				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
