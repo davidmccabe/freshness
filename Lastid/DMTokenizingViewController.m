@@ -46,11 +46,11 @@
     
     BOOL rowsAreAdjacent = (row1 == row2 + 1) || (row2 == row1 + 1);
     if (rowsAreAdjacent) {
-        [self mergeRowNumber:row1 withRowNumber:row2];
+        [self mergeFirstRowNumber:MIN(row1, row2) withSecondRowNumber:MAX(row1, row2)];
     }
 }
 
-- (void)mergeRowNumber:(NSUInteger)row1 withRowNumber:(NSUInteger)row2
+- (void)mergeFirstRowNumber:(NSUInteger)row1 withSecondRowNumber:(NSUInteger)row2
 {
     NSString *phrase1 = [self.phrases objectAtIndex:row1];
     NSString *phrase2 = [self.phrases objectAtIndex:row2];
