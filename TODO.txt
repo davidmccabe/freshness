@@ -1,0 +1,7 @@
+Enable Done key only when input is non-blank.
+
+Indicate what happened when review is finished.
+
+Editing during review.
+
+Make navbars not scroll.

@@ -38,6 +38,7 @@
 		6361D9FC153126F600309770 /* MagicalRecordHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EC153126F500309770 /* MagicalRecordHelpers.m */; };
 		6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EF153126F500309770 /* MRCoreDataAction.m */; };
 		6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9FF1535006E00309770 /* DMTokenizingViewController.m */; };
+		6361DA061535226B00309770 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6361DA051535226B00309770 /* TODO.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		6361D9EF153126F500309770 /* MRCoreDataAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCoreDataAction.m; path = MagicalRecord/Source/MRCoreDataAction.m; sourceTree = "<group>"; };
 		6361D9FE1535006E00309770 /* DMTokenizingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTokenizingViewController.h; sourceTree = "<group>"; };
 		6361D9FF1535006E00309770 /* DMTokenizingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTokenizingViewController.m; sourceTree = "<group>"; };
+		6361DA051535226B00309770 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		6361D9901530EA4900309770 = {
 			isa = PBXGroup;
 			children = (
+				6361DA051535226B00309770 /* TODO.txt */,
 				6361D9CF153126D300309770 /* MagicalRecord */,
 				6361D9A51530EA4900309770 /* Lastid */,
 				6361D99E1530EA4900309770 /* Frameworks */,
@@ -288,6 +291,7 @@
 				6361D9BA1530EA4900309770 /* first@2x.png in Resources */,
 				6361D9BF1530EA4900309770 /* second.png in Resources */,
 				6361D9C11530EA4900309770 /* second@2x.png in Resources */,
+				6361DA061535226B00309770 /* TODO.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +434,7 @@
 				6361D9C61530EA4900309770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
