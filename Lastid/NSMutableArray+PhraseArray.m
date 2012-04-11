@@ -30,6 +30,11 @@
     [self removeObjectAtIndex:secondIndex];
 }
 
+// Clang doesn't know that we're using performSelector: with selectors that return
+// autoreleased objects, so it's worried about it causing a leak.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 - (void)mapUsingSelector:(SEL)aSelector
 {
     for (NSUInteger i = 0; i < self.count; i++) {
@@ -45,5 +50,7 @@
         }
     }
 }
+
+#pragma clang diagnostic pop
 
 @end
