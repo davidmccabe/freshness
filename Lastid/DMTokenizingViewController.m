@@ -9,7 +9,7 @@
 #import "DMTokenizingViewController.h"
 
 @interface DMTokenizingViewController ()
-@property (strong, nonatomic) NSArray *phrases;
+@property (strong, nonatomic) NSMutableArray *phrases;
 @end
 
 @implementation DMTokenizingViewController
@@ -25,7 +25,7 @@
 
 - (void)setInitialPhrasesFromString:(NSString *)aString
 {
-    self.phrases = [aString componentsSeparatedByString:@" "];
+    self.phrases = [NSMutableArray arrayWithArray:[aString componentsSeparatedByString:@" "]];
 }
 
 - (void)viewDidLoad
@@ -52,7 +52,17 @@
 
 - (void)mergeRowNumber:(NSUInteger)row1 withRowNumber:(NSUInteger)row2
 {
-    NSLog(@"merging rows");
+    NSString *phrase1 = [self.phrases objectAtIndex:row1];
+    NSString *phrase2 = [self.phrases objectAtIndex:row2];
+    NSString *newPhrase = [NSString stringWithFormat:@"%@ %@", phrase1, phrase2];
+    
+    [self.phrases replaceObjectAtIndex:row1 withObject:newPhrase];
+    [self.phrases removeObjectAtIndex:row2];
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row2 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
