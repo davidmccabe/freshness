@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Utilities)
-- (BOOL)isBlank;
+- (NSArray *)componentsSeparatedByDelimiters;
+- (NSString *)stringByTrimmingDelimiters;
+- (BOOL)isOnlyDelimiters;
 @end

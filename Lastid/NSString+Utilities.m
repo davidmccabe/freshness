@@ -7,10 +7,19 @@
 //
 
 #import "NSString+Utilities.h"
+#import "NSCharacterSet+Delimeters.h"
 
 @implementation NSString (Utilities)
-- (BOOL)isBlank
+- (NSArray *)componentsSeparatedByDelimiters
 {
-    return [@"" isEqualToString:[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    return [self componentsSeparatedByCharactersInSet:[NSCharacterSet delimitersCharacterSet]];
+}
+- (NSString *)stringByTrimmingDelimiters
+{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet delimitersCharacterSet]];
+}
+- (BOOL)isOnlyDelimiters
+{
+    return [@"" isEqualToString:[self stringByTrimmingDelimiters]];
 }
 @end

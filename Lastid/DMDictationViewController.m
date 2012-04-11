@@ -47,7 +47,7 @@
 
     if ([text isEqualToString:@"\n"]) {
         // The return key is unavoidably enabled when any text is entered, even whitespace, but we ignore whitespace.
-        if (![textView.text isBlank]) [self entryDidFinish];
+        if (![textView.text isOnlyDelimiters]) [self entryDidFinish];
         return NO;
     } else {
         return YES;

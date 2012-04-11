@@ -7,15 +7,15 @@
 //
 
 #import "NSMutableArray+PhraseArray.h"
+#import "NSString+Utilities.h"
 
 @implementation NSMutableArray (PhraseArray)
 
 + (NSMutableArray *)phraseArrayFromString:(NSString *)aString
 {
-    NSCharacterSet *delimeters = [NSCharacterSet characterSetWithCharactersInString:@", \n\t"];
-    NSMutableArray *tokens = [NSMutableArray arrayWithArray:[aString componentsSeparatedByCharactersInSet:delimeters]];
-    [tokens removeObject:@""];
-    [tokens removeObject:@" "];
+    NSMutableArray *tokens = [NSMutableArray arrayWithArray:[aString componentsSeparatedByDelimiters]];
+    [tokens mapUsingSelector:@selector(stringByTrimmingDelimiters)];
+    [tokens filterUsingSelector:@selector(isOnlyDelimiters)];
     return tokens;
 }
 
@@ -27,6 +27,22 @@
     
     [self replaceObjectAtIndex:firstIndex withObject:newPhrase];
     [self removeObjectAtIndex:secondIndex];
+}
+
+- (void)mapUsingSelector:(SEL)aSelector
+{
+    for (NSUInteger i = 0; i < self.count; i++) {
+        [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector]];
+    }
+}
+
+- (void)filterUsingSelector:(SEL)aSelector
+{
+    for (NSUInteger i = 0; i < self.count; i++) {
+        if ([[self objectAtIndex:i] performSelector:aSelector]) {
+            [self removeObjectAtIndex:i--];
+        }
+    }
 }
 
 @end
