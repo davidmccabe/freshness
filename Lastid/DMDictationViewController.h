@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DMLookupViewController.h"
+#import "DMTokenizingViewController.h"
 
-@interface DMDictationViewController : UIViewController <UITextViewDelegate, DMLookupViewControllerDelegate>
+@interface DMDictationViewController : UIViewController <UITextViewDelegate, DMLookupViewControllerDelegate, DMTokenizingViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *entryView;
 @end

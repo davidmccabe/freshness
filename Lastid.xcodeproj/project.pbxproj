@@ -37,6 +37,7 @@
 		6361D9FB153126F600309770 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9E9153126F500309770 /* NSPersistentStoreCoordinator+MagicalRecord.m */; };
 		6361D9FC153126F600309770 /* MagicalRecordHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EC153126F500309770 /* MagicalRecordHelpers.m */; };
 		6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EF153126F500309770 /* MRCoreDataAction.m */; };
+		6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9FF1535006E00309770 /* DMTokenizingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,8 @@
 		6361D9ED153126F500309770 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MagicalRecordShorthand.h; path = MagicalRecord/Source/MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		6361D9EE153126F500309770 /* MRCoreDataAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCoreDataAction.h; path = MagicalRecord/Source/MRCoreDataAction.h; sourceTree = "<group>"; };
 		6361D9EF153126F500309770 /* MRCoreDataAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCoreDataAction.m; path = MagicalRecord/Source/MRCoreDataAction.m; sourceTree = "<group>"; };
+		6361D9FE1535006E00309770 /* DMTokenizingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTokenizingViewController.h; sourceTree = "<group>"; };
+		6361D9FF1535006E00309770 /* DMTokenizingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTokenizingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,12 +150,14 @@
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
 				6361D9AF1530EA4900309770 /* DMAppDelegate.m */,
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
+				6361D9FE1535006E00309770 /* DMTokenizingViewController.h */,
+				6361D9FF1535006E00309770 /* DMTokenizingViewController.m */,
+				6361D9BB1530EA4900309770 /* DMLookupViewController.h */,
+				6361D9BC1530EA4900309770 /* DMLookupViewController.m */,
 				6361D9B41530EA4900309770 /* DMDictationViewController.h */,
 				6361D9B51530EA4900309770 /* DMDictationViewController.m */,
 				6361D9B71530EA4900309770 /* first.png */,
 				6361D9B91530EA4900309770 /* first@2x.png */,
-				6361D9BB1530EA4900309770 /* DMLookupViewController.h */,
-				6361D9BC1530EA4900309770 /* DMLookupViewController.m */,
 				6361D9BE1530EA4900309770 /* second.png */,
 				6361D9C01530EA4900309770 /* second@2x.png */,
 				6361D9A61530EA4900309770 /* Supporting Files */,
@@ -313,6 +318,7 @@
 				6361D9FB153126F600309770 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				6361D9FC153126F600309770 /* MagicalRecordHelpers.m in Sources */,
 				6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */,
+				6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

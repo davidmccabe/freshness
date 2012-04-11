@@ -11,10 +11,12 @@
 
 @interface DMDictationViewController ()
 - (void)entryDidFinish;
+@property (copy, nonatomic) NSString *input;
 @end
 
 @implementation DMDictationViewController
 @synthesize entryView;
+@synthesize input;
 
 - (void)viewDidLoad
 {
@@ -47,14 +49,9 @@
 }
 
 - (void)entryDidFinish {
-    [self.entryView resignFirstResponder];
-    NSArray *tokens = [self.entryView.text componentsSeparatedByString:@" "];
-    for (NSString *token in tokens) {
-        [Food enterFoodWithName:token];
-    }
-    [[NSManagedObjectContext MR_defaultContext] save:NULL];
-    
+    self.input = self.entryView.text;
     self.entryView.text = @"";
+    [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -64,15 +61,33 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"ShowLookUp"]) {
-        DMLookupViewController *viewController = segue.destinationViewController;
-        viewController.delegate = self;
-	}
+    [segue.destinationViewController setDelegate:self];
 }
 
 - (void)lookupViewControllerDidFinish:(DMLookupViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSString *) stringToBeTokenized
+{
+    return self.input;
+}
+
+- (void) tokenizingViewControllerDidCancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+- (void) tokenizingViewControllerDidYieldPhrases:(NSArray *)phrases
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    for (NSString *phrase in phrases) {
+        [Food enterFoodWithName:phrase];
+    }
+    [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
 @end
