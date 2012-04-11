@@ -41,12 +41,15 @@
     if (recognizer.state != UIGestureRecognizerStateEnded) return;
     if (recognizer.numberOfTouches != 2) return;
     
-    NSUInteger row1 = [[self.tableView indexPathForRowAtPoint:[recognizer locationOfTouch:0 inView:self.tableView]] row];
-    NSUInteger row2 = [[self.tableView indexPathForRowAtPoint:[recognizer locationOfTouch:1 inView:self.tableView]] row];
+    NSUInteger a = [[self.tableView indexPathForRowAtPoint:[recognizer locationOfTouch:0 inView:self.tableView]] row];
+    NSUInteger b = [[self.tableView indexPathForRowAtPoint:[recognizer locationOfTouch:1 inView:self.tableView]] row];
     
-    BOOL rowsAreAdjacent = (row1 == row2 + 1) || (row2 == row1 + 1);
+    NSUInteger row1 = MIN(a,b);
+    NSUInteger row2 = MAX(a,b);
+    
+    BOOL rowsAreAdjacent = (row1 == row2 - 1);
     if (rowsAreAdjacent) {
-        [self mergeFirstRowNumber:MIN(row1, row2) withSecondRowNumber:MAX(row1, row2)];
+        [self mergeFirstRowNumber:row1 withSecondRowNumber:row2];
     }
 }
 
