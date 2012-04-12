@@ -31,7 +31,7 @@
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
 	
-    Food *food = [[Food MR_findAllSortedBy:@"lastAdded" ascending:YES] objectAtIndex:indexPath.row];
+    Food *food = [[Food MR_findAllSortedBy:@"name" ascending:YES] objectAtIndex:indexPath.row];
 	cell.textLabel.text = food.name;
 	cell.detailTextLabel.text = [self labelStringForDate:food.lastAdded];
     

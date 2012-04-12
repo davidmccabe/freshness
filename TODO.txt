@@ -1,5 +1,15 @@
 Indicate what happened when review is finished.
 
-Editing during review.
+Editing during review
+Needed:
+    Joining
+    Splitting
+    Deleting
+    Adding
+    Typo-correcting
+Not needed:
+    Rearranging
 
 Older entries get grey.
+
+Alphabetize entries.
