@@ -4,7 +4,6 @@ Editing during review
 Needed:
     Joining
     Splitting
-    Deleting
     Adding
     Typo-correcting
 Not needed:
