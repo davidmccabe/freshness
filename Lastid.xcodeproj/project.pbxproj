@@ -15,11 +15,7 @@
 		6361D9B01530EA4900309770 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9AF1530EA4900309770 /* DMAppDelegate.m */; };
 		6361D9B31530EA4900309770 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9B11530EA4900309770 /* MainStoryboard.storyboard */; };
 		6361D9B61530EA4900309770 /* DMDictationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9B51530EA4900309770 /* DMDictationViewController.m */; };
-		6361D9B81530EA4900309770 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9B71530EA4900309770 /* first.png */; };
-		6361D9BA1530EA4900309770 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9B91530EA4900309770 /* first@2x.png */; };
 		6361D9BD1530EA4900309770 /* DMLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9BC1530EA4900309770 /* DMLookupViewController.m */; };
-		6361D9BF1530EA4900309770 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9BE1530EA4900309770 /* second.png */; };
-		6361D9C11530EA4900309770 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6361D9C01530EA4900309770 /* second@2x.png */; };
 		6361D9C91530FE0800309770 /* Lastid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */; };
 		6361D9CC1530FE6F00309770 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9CB1530FE6F00309770 /* Food.m */; };
 		6361D9CE1531017F00309770 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9CD1531017F00309770 /* CoreData.framework */; };
@@ -59,12 +55,8 @@
 		6361D9B21530EA4900309770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		6361D9B41530EA4900309770 /* DMDictationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMDictationViewController.h; sourceTree = "<group>"; };
 		6361D9B51530EA4900309770 /* DMDictationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMDictationViewController.m; sourceTree = "<group>"; };
-		6361D9B71530EA4900309770 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		6361D9B91530EA4900309770 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		6361D9BB1530EA4900309770 /* DMLookupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMLookupViewController.h; sourceTree = "<group>"; };
 		6361D9BC1530EA4900309770 /* DMLookupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMLookupViewController.m; sourceTree = "<group>"; };
-		6361D9BE1530EA4900309770 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		6361D9C01530EA4900309770 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		6361D9C81530FE0800309770 /* Lastid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lastid.xcdatamodel; sourceTree = "<group>"; };
 		6361D9CA1530FE6F00309770 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		6361D9CB1530FE6F00309770 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
@@ -179,10 +171,6 @@
 				6361D9FF1535006E00309770 /* DMTokenizingViewController.m */,
 				6361DA171537C46800309770 /* DMReviewCell.h */,
 				6361DA181537C46800309770 /* DMReviewCell.m */,
-				6361D9B71530EA4900309770 /* first.png */,
-				6361D9B91530EA4900309770 /* first@2x.png */,
-				6361D9BE1530EA4900309770 /* second.png */,
-				6361D9C01530EA4900309770 /* second@2x.png */,
 				6361D9A61530EA4900309770 /* Supporting Files */,
 			);
 			path = Lastid;
@@ -307,10 +295,6 @@
 			files = (
 				6361D9AA1530EA4900309770 /* InfoPlist.strings in Resources */,
 				6361D9B31530EA4900309770 /* MainStoryboard.storyboard in Resources */,
-				6361D9B81530EA4900309770 /* first.png in Resources */,
-				6361D9BA1530EA4900309770 /* first@2x.png in Resources */,
-				6361D9BF1530EA4900309770 /* second.png in Resources */,
-				6361D9C11530EA4900309770 /* second@2x.png in Resources */,
 				6361DA061535226B00309770 /* TODO.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
