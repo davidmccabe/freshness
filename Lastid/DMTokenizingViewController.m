@@ -8,6 +8,7 @@
 
 #import "DMTokenizingViewController.h"
 #import "NSMutableArray+PhraseArray.h"
+#import "DMReviewCell.h"
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
@@ -57,6 +58,8 @@
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row2 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
+    
+    [self performSelector:@selector(updateRowTags) withObject:nil afterDelay:0.0];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -71,9 +74,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
+	DMReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
 	
-	cell.textLabel.text = [self.phrases objectAtIndex:indexPath.row];
+	cell.textField.text = [self.phrases objectAtIndex:indexPath.row];
+    cell.textField.tag = indexPath.row;
     
     return cell;
 }
@@ -87,7 +91,27 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.phrases removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self performSelector:@selector(updateRowTags) withObject:nil afterDelay:0.0];
     }   
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self.phrases replaceObjectAtIndex:textField.tag withObject:newString];
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)updateRowTags {
+    NSArray *visibleCells = [self.tableView visibleCells];  
+    for (DMReviewCell *cell in visibleCells) {
+        cell.textField.tag = [[self.tableView indexPathForCell:cell] row];
+    }
 }
 
 - (IBAction)cancelPressed:(id)sender {

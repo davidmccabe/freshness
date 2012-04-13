@@ -16,7 +16,7 @@
 - (void) tokenizingViewControllerDidYieldPhrases:(NSArray *)phrases;
 @end
 
-@interface DMTokenizingViewController : UITableViewController
+@interface DMTokenizingViewController : UITableViewController <UITextFieldDelegate>
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)donePressed:(id)sender;
 @property (weak, nonatomic) id <DMTokenizingViewControllerDelegate> delegate;

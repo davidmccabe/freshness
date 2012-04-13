@@ -1,12 +1,5 @@
 Indicate what happened when review is finished.
 
-Editing during review
-Needed:
-    Joining
-    Splitting
-    Adding
-    Typo-correcting
-Not needed:
-    Rearranging
+Ability to add new entries during review.
 
 Older entries get grey.
