@@ -10,5 +10,3 @@ Not needed:
     Rearranging
 
 Older entries get grey.
-
-Alphabetize entries.
