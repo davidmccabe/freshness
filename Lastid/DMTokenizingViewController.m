@@ -119,6 +119,7 @@
 }
 
 - (IBAction)donePressed:(id)sender {
+    [self performSegueWithIdentifier:@"DismissReviewSegue" sender:self];
     [self.delegate tokenizingViewControllerDidYieldPhrases:self.phrases];
 }
 @end

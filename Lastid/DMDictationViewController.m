@@ -62,7 +62,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self.entryView becomeFirstResponder];
+//    [self.entryView becomeFirstResponder];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -88,8 +88,6 @@
 
 - (void) tokenizingViewControllerDidYieldPhrases:(NSArray *)phrases
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
     for (NSString *phrase in phrases) {
         [Food enterFoodWithName:phrase];
     }

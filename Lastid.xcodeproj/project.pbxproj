@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6341AF781539347D00E118A5 /* DMDismissReviewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6341AF771539347D00E118A5 /* DMDismissReviewSegue.m */; };
 		6361D9A01530EA4900309770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D99F1530EA4900309770 /* UIKit.framework */; };
 		6361D9A21530EA4900309770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9A11530EA4900309770 /* Foundation.framework */; };
 		6361D9A41530EA4900309770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9A31530EA4900309770 /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6341AF761539347D00E118A5 /* DMDismissReviewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMDismissReviewSegue.h; sourceTree = "<group>"; };
+		6341AF771539347D00E118A5 /* DMDismissReviewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMDismissReviewSegue.m; sourceTree = "<group>"; };
 		6361D99B1530EA4900309770 /* Lastid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lastid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6361D99F1530EA4900309770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6361D9A11530EA4900309770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -171,6 +174,8 @@
 				6361D9FF1535006E00309770 /* DMTokenizingViewController.m */,
 				6361DA171537C46800309770 /* DMReviewCell.h */,
 				6361DA181537C46800309770 /* DMReviewCell.m */,
+				6341AF761539347D00E118A5 /* DMDismissReviewSegue.h */,
+				6341AF771539347D00E118A5 /* DMDismissReviewSegue.m */,
 				6361D9A61530EA4900309770 /* Supporting Files */,
 			);
 			path = Lastid;
@@ -331,6 +336,7 @@
 				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
 				6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */,
 				6361DA191537C46900309770 /* DMReviewCell.m in Sources */,
+				6341AF781539347D00E118A5 /* DMDismissReviewSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

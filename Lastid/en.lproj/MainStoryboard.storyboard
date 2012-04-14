@@ -187,9 +187,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="2" kind="custom" identifier="DismissReviewSegue" customClass="DMDismissReviewSegue" id="QZT-LO-7yw"/>
+                    </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1623" y="466"/>
+            <point key="canvasLocation" x="131" y="253"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wQZ-ol-Bkz">
@@ -225,7 +228,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1097" y="466"/>
+            <point key="canvasLocation" x="727" y="698"/>
         </scene>
     </scenes>
     <resources>
