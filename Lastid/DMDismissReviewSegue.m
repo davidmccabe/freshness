@@ -17,18 +17,16 @@
     UIView *destView = [self.destinationViewController view];
     UIView *sourceView = [[self.sourceViewController navigationController] view];
     
-    sourceView.layer.borderColor = [UIColor grayColor].CGColor;
-    sourceView.layer.borderWidth = 1.0f;
     sourceView.layer.shadowOpacity = 0.5f;
     sourceView.layer.shadowRadius = 10.0f;
     
     [sourceView.superview insertSubview:destView belowSubview:sourceView];
 
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
-            sourceView.transform = CGAffineTransformMakeScale(0.2,0.2);
+            sourceView.transform = CGAffineTransformMakeTranslation(0.0, 200.0);
         }
         completion:^(BOOL finished) {
             [self performStepTwo];
