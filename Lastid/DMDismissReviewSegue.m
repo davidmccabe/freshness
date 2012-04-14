@@ -17,8 +17,8 @@
     UIView *destView = [self.destinationViewController view];
     UIView *sourceView = [[self.sourceViewController navigationController] view];
     
-    sourceView.layer.shadowOpacity = 0.5f;
-    sourceView.layer.shadowRadius = 10.0f;
+    sourceView.layer.shadowOpacity = 0.4f;
+    sourceView.layer.shadowRadius = 5.0f;
     
     UIBarButtonItem *button = [self.destinationViewController lookupButton];
     button.tintColor = [UIColor redColor];
