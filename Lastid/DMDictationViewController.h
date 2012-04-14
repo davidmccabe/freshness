@@ -11,5 +11,6 @@
 #import "DMTokenizingViewController.h"
 
 @interface DMDictationViewController : UIViewController <UITextViewDelegate, DMLookupViewControllerDelegate, DMTokenizingViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *lookupButton;
 @property (weak, nonatomic) IBOutlet UITextView *entryView;
 @end

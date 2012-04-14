@@ -42,7 +42,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Whendidi" id="lQv-gD-EPA">
-                                        <barButtonItem key="rightBarButtonItem" title="History" id="jGC-KC-KS0">
+                                        <barButtonItem key="rightBarButtonItem" tag="7" title="History" id="jGC-KC-KS0">
                                             <connections>
                                                 <segue destination="XJ4-wF-1f7" kind="modal" identifier="ShowLookUp" modalTransitionStyle="flipHorizontal" id="x0o-Ex-pmh"/>
                                             </connections>
@@ -63,6 +63,7 @@
                     <tabBarItem key="tabBarItem" title="Entry" image="first" id="7"/>
                     <connections>
                         <outlet property="entryView" destination="PKr-3s-vyf" id="66Z-uW-lec"/>
+                        <outlet property="lookupButton" destination="jGC-KC-KS0" id="jED-cQ-qR2"/>
                         <segue destination="kbI-AH-J4O" kind="modal" identifier="ShowReviewSegue" id="63f-bD-SXn"/>
                     </connections>
                 </viewController>

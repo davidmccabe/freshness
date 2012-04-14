@@ -20,6 +20,7 @@
 @end
 
 @implementation DMDictationViewController
+@synthesize lookupButton;
 @synthesize entryView;
 @synthesize input;
 
@@ -32,6 +33,7 @@
 - (void)viewDidUnload
 {
     [self setEntryView:nil];
+    [self setLookupButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
