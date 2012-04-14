@@ -25,4 +25,10 @@
     return food;
 }
 
++ (BOOL)foodExistsWhoseNameHasPrefix:(NSString *)prefix
+{
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"name beginswith %@", prefix];
+    return [Food MR_countOfEntitiesWithPredicate:p] > 0;
+}
+
 @end

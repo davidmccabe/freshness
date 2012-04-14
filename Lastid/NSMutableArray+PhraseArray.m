@@ -8,6 +8,7 @@
 
 #import "NSMutableArray+PhraseArray.h"
 #import "NSString+Utilities.h"
+#import "Food.h"
 
 @implementation NSMutableArray (PhraseArray)
 
@@ -17,6 +18,7 @@
     [tokens mapUsingSelector:@selector(stringByTrimmingDelimiters)];
     [tokens mapUsingSelector:@selector(capitalizedString)];
     [tokens filterUsingSelector:@selector(isOnlyDelimiters)];
+    tokens = [tokens phraseArrayByJoiningExistingPhrases];
     return tokens;
 }
 
@@ -30,6 +32,25 @@
     [self removeObjectAtIndex:secondIndex];
 }
 
+- (NSMutableArray *)phraseArrayByJoiningExistingPhrases
+{
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self count]];
+    
+	NSMutableArray *phrase = [NSMutableArray array];
+	for(NSString *word in self) {
+        NSArray *attemptedNextPhrase = [phrase arrayByAddingObject:word];
+        BOOL isPrefixOfExistingWord = [Food foodExistsWhoseNameHasPrefix:[attemptedNextPhrase componentsJoinedByString:@" "]];
+		if (! isPrefixOfExistingWord ) {
+			if(phrase.count > 0) [result addObject:phrase];
+			phrase = [NSMutableArray array];
+		}
+        phrase = [NSMutableArray arrayWithArray:[phrase arrayByAddingObject:word]];
+	}
+	[result addObject:phrase];
+    [result mapUsingSelector:@selector(componentsJoinedByString:) withObject:@" "];
+	return result;
+}
+
 // Clang doesn't know that we're using performSelector: with selectors that return
 // autoreleased objects, so it's worried about it causing a leak.
 #pragma clang diagnostic push
@@ -39,6 +60,13 @@
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector]];
+    }
+}
+
+- (void)mapUsingSelector:(SEL)aSelector withObject:(id)anObject
+{
+    for (NSUInteger i = 0; i < self.count; i++) {
+        [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector withObject:anObject]];
     }
 }
 
