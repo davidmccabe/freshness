@@ -20,6 +20,9 @@
     sourceView.layer.shadowOpacity = 0.5f;
     sourceView.layer.shadowRadius = 10.0f;
     
+    UIBarButtonItem *button = [self.destinationViewController lookupButton];
+    button.tintColor = [UIColor redColor];
+    
     [sourceView.superview insertSubview:destView belowSubview:sourceView];
 
     [UIView animateWithDuration:0.5
@@ -40,7 +43,6 @@
     UIView *sourceView = [[self.sourceViewController navigationController] view];
     
     UIBarButtonItem *button = [self.destinationViewController lookupButton];
-    button.tintColor = [UIColor redColor];
     
     [UIView animateWithDuration:0.6
                           delay:0.1
