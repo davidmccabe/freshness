@@ -17,8 +17,8 @@
     UIView *destView = [self.destinationViewController view];
     UIView *sourceView = [[self.sourceViewController navigationController] view];
     
-    sourceView.layer.shadowOpacity = 0.4f;
-    sourceView.layer.shadowRadius = 5.0f;
+    sourceView.layer.shadowOpacity = 0.4;
+    sourceView.layer.shadowRadius = 5.0;
     
     UIBarButtonItem *button = [self.destinationViewController lookupButton];
     button.tintColor = [UIColor redColor];
@@ -29,7 +29,7 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
-            sourceView.transform = CGAffineTransformMakeTranslation(0.0, 200.0);
+            sourceView.transform = CGAffineTransformMakeTranslation(0.0, 120.0);
         }
         completion:^(BOOL finished) {
             [self performStepTwo];
@@ -48,13 +48,12 @@
                           delay:0.1
                         options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
-            sourceView.transform = CGAffineTransformMakeScale(0.1,0.1);
+            sourceView.transform = CGAffineTransformMakeScale(0.05,0.05);
             sourceView.center = CGPointMake(285,55);
-            sourceView.alpha = 0.5;
+            sourceView.alpha = 0.1;
         }
         completion:^(BOOL finished) {
             button.tintColor = nil;
-            
             [destView removeFromSuperview];
             [self.sourceViewController dismissViewControllerAnimated:NO completion:nil];
         }
