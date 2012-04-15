@@ -1,3 +1,0 @@
-Ability to add new entries during review.
-
-Older entries get grey.

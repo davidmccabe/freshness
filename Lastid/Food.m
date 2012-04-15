@@ -16,6 +16,8 @@
 
 + (Food *)enterFoodWithName:(NSString *)name
 {
+    if ([name isEqualToString:@""]) return nil;
+    
     Food *food = [Food MR_findFirstByAttribute:@"name" withValue:name];
     if (!food) {
         food = [Food MR_createEntity];
