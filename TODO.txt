@@ -1,5 +1,3 @@
-Indicate what happened when review is finished.
-
 Ability to add new entries during review.
 
 Older entries get grey.

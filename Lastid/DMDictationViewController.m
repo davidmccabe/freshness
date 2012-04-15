@@ -24,12 +24,6 @@
 @synthesize entryView;
 @synthesize input;
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
 - (void)viewDidUnload
 {
     [self setEntryView:nil];
@@ -64,7 +58,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    [self.entryView becomeFirstResponder];
+    static BOOL firstTime = TRUE;
+    if(firstTime) [self.entryView becomeFirstResponder];
+    firstTime = FALSE;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
