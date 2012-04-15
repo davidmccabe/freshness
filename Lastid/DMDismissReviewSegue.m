@@ -17,6 +17,8 @@
     UIView *destView = [self.destinationViewController view];
     UIView *sourceView = [[self.sourceViewController navigationController] view];
     
+    [sourceView endEditing:YES];
+    
     sourceView.layer.shadowOpacity = 0.4;
     sourceView.layer.shadowRadius = 5.0;
     
