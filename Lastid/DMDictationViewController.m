@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "DMDictationViewController.h"
 #import "Food.h"
 #import "NSString+Utilities.h"
@@ -54,6 +55,11 @@
     self.input = self.entryView.text;
     self.entryView.text = @"";
     [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.entryView.layer.borderWidth = 1.0;
+    self.entryView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
