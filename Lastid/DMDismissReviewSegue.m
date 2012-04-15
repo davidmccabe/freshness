@@ -19,15 +19,12 @@
     
     [sourceView endEditing:YES];
     
-    sourceView.layer.shadowOpacity = 0.4;
-    sourceView.layer.shadowRadius = 5.0;
-    
     UIBarButtonItem *button = [self.destinationViewController lookupButton];
     button.tintColor = [UIColor redColor];
     
     [sourceView.superview insertSubview:destView belowSubview:sourceView];
 
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
@@ -47,10 +44,10 @@
     UIBarButtonItem *button = [self.destinationViewController lookupButton];
     
     [UIView animateWithDuration:0.6
-                          delay:0.1
+                          delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
         animations:^{
-            sourceView.transform = CGAffineTransformMakeScale(0.05,0.05);
+            sourceView.transform = CGAffineTransformMakeScale(0.02,0.02);
             sourceView.center = CGPointMake(285,55);
             sourceView.alpha = 0.1;
         }
