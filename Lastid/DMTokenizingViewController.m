@@ -122,4 +122,13 @@
     [self performSegueWithIdentifier:@"DismissReviewSegue" sender:self];
     [self.delegate tokenizingViewControllerDidYieldPhrases:self.phrases];
 }
+
+- (IBAction)addPressed:(id)sender {
+    NSUInteger row = [self.phrases count];
+    [self.phrases addObject:@""];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[(DMReviewCell*)[self.tableView cellForRowAtIndexPath:indexPath] textField] becomeFirstResponder];
+}
 @end

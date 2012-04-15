@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Whendidi" id="lQv-gD-EPA">
+                                    <navigationItem title="Mold Avoider" id="lQv-gD-EPA">
                                         <barButtonItem key="rightBarButtonItem" tag="7" title="History" id="jGC-KC-KS0">
                                             <connections>
                                                 <segue destination="XJ4-wF-1f7" kind="modal" identifier="ShowLookUp" modalTransitionStyle="flipHorizontal" id="x0o-Ex-pmh"/>
@@ -122,7 +122,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iw-z6-7qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="Tokenizing" title="Tokenizing" id="Bhi-aP-u3v" customClass="DMTokenizingViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JEp-Dn-C24">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="EAB-2F-Io0">
@@ -170,6 +170,14 @@
                             <outlet property="delegate" destination="Bhi-aP-u3v" id="dGY-lL-gbW"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BD8-2K-75B"/>
+                        <barButtonItem systemItem="add" id="GbR-Gw-0wK">
+                            <connections>
+                                <action selector="addPressed:" destination="Bhi-aP-u3v" id="fK9-a1-urW"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Review" id="TJe-7K-5Za">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YZK-8J-LFl">
                             <connections>
@@ -182,6 +190,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="2" kind="custom" identifier="DismissReviewSegue" customClass="DMDismissReviewSegue" id="QZT-LO-7yw"/>
                     </connections>
@@ -211,13 +220,18 @@
         <scene sceneID="Xm6-A9-VxT">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nao-v4-es8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="kbI-AH-J4O" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="kbI-AH-J4O" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="32V-ID-OQA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Y1F-pd-Ot2">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Bhi-aP-u3v" kind="relationship" relationship="rootViewController" id="ckK-Yu-8px"/>
                     </connections>
@@ -229,34 +243,6 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="DMDictationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMDictationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="entryView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="lookupButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="DMLookupViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLookupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addFoodsPressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="DMReviewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMReviewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="DMTokenizingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMTokenizingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelPressed:"/>
-                <relationship kind="action" name="donePressed:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

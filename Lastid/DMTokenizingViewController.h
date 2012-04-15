@@ -19,5 +19,6 @@
 @interface DMTokenizingViewController : UITableViewController <UITextFieldDelegate>
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)donePressed:(id)sender;
+- (IBAction)addPressed:(id)sender;
 @property (weak, nonatomic) id <DMTokenizingViewControllerDelegate> delegate;
 @end
