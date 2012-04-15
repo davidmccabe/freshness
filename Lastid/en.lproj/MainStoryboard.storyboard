@@ -152,7 +152,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             <connections>
                                                 <outlet property="delegate" destination="Bhi-aP-u3v" id="d20-sW-udg"/>
                                             </connections>
@@ -243,6 +243,35 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="DMDictationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMDictationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="entryView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lookupButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DMLookupViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLookupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addFoodsPressed:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="DMReviewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMReviewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="DMTokenizingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMTokenizingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addPressed:"/>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="action" name="donePressed:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
