@@ -30,7 +30,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Freshness" id="lQv-gD-EPA">
-                                        <barButtonItem key="rightBarButtonItem" tag="7" title="History" id="jGC-KC-KS0">
+                                        <barButtonItem key="rightBarButtonItem" tag="7" title="Inventory" id="jGC-KC-KS0">
                                             <connections>
                                                 <segue destination="XJ4-wF-1f7" kind="modal" identifier="ShowLookUp" modalTransitionStyle="flipHorizontal" id="x0o-Ex-pmh"/>
                                             </connections>
@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--Lookup View Controller - History-->
+        <!--Lookup View Controller - Inventory-->
         <scene sceneID="rf0-F4-fC0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSV-Nb-eaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,7 +105,7 @@
                             <outlet property="delegate" destination="i8D-0e-w3J" id="Td7-UZ-Ngf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="History" id="EKa-tJ-9HY">
+                    <navigationItem key="navigationItem" title="Inventory" id="EKa-tJ-9HY">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q5O-t4-PlW">
                             <connections>
                                 <action selector="addFoodsPressed:" destination="i8D-0e-w3J" id="jMP-SU-aAI"/>
