@@ -10,12 +10,18 @@
 #import "Food.h"
 
 @interface DMLookupViewController ()
-
+@property (strong, nonatomic) NSMutableArray *inventory;
 @end
 
 @implementation DMLookupViewController
 
+@synthesize inventory;
 @synthesize delegate;
+
+- (void)viewDidLoad
+{
+    self.inventory = [NSMutableArray arrayWithArray:[Food MR_findAllSortedBy:@"name" ascending:YES]];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -24,14 +30,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [Food MR_countOfEntities];
+    return self.inventory.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
 	
-    Food *food = [[Food MR_findAllSortedBy:@"name" ascending:YES] objectAtIndex:indexPath.row];
+    Food *food = [self.inventory objectAtIndex:indexPath.row];
 	cell.textLabel.text = food.name;
 	cell.detailTextLabel.text = [self labelStringForDate:food.lastAdded];
     
@@ -51,4 +57,5 @@
 {
     [self.delegate lookupViewControllerDidFinish:self];
 }
+
 @end
