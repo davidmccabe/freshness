@@ -58,4 +58,15 @@
     [self.delegate lookupViewControllerDidFinish:self];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Food *doomed = [self.inventory objectAtIndex:indexPath.row];
+        [self.inventory removeObjectAtIndex:indexPath.row];
+        [doomed MR_deleteEntity];
+        [[NSManagedObjectContext MR_defaultContext] save:NULL];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+}
+
 @end
