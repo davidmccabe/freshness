@@ -14,7 +14,7 @@
 - (void)lookupViewControllerDidFinish:(DMLookupViewController *)controller;
 @end
 
-@interface DMLookupViewController : UITableViewController
+@interface DMLookupViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 - (IBAction)addFoodsPressed:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) id <DMLookupViewControllerDelegate> delegate;
 @end
