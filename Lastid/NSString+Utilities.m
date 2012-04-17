@@ -22,4 +22,13 @@
 {
     return [@"" isEqualToString:[self stringByTrimmingDelimiters]];
 }
+
+- (NSString *)firstInitialString
+{
+    if (self.length == 0 || self.length == 1)
+        return self;
+    else
+        return [self substringToIndex:1];
+}
+
 @end

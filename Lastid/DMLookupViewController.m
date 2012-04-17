@@ -20,12 +20,14 @@
 
 - (void)viewDidLoad
 {
+    self.tableView.sectionIndexMinimumDisplayRowCount = 50;
+    
     NSFetchRequest *fetchRequest = [Food MR_requestAllSortedBy:@"name" ascending:YES];
 
     self.frc = [[NSFetchedResultsController alloc]
          initWithFetchRequest:fetchRequest
          managedObjectContext:[NSManagedObjectContext MR_defaultContext]
-         sectionNameKeyPath:nil
+         sectionNameKeyPath:@"name.firstInitialString"
          cacheName:nil];
     self.frc.delegate = self;
     

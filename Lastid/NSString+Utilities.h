@@ -12,4 +12,5 @@
 - (NSArray *)componentsSeparatedByDelimiters;
 - (NSString *)stringByTrimmingDelimiters;
 - (BOOL)isOnlyDelimiters;
+- (NSString *)firstInitialString;
 @end
