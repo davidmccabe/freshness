@@ -15,6 +15,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [MagicalRecordHelpers setupCoreDataStack];
+
+    NSDictionary *appDefaults = [NSDictionary
+        dictionaryWithObject:@"name" forKey:@"inventorySortOrder"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
     return YES;
 }
 							
@@ -43,6 +48,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [MagicalRecordHelpers cleanUp];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

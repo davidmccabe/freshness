@@ -16,23 +16,13 @@
 @implementation DMLookupViewController
 
 @synthesize frc;
+@synthesize sortControl;
 @synthesize delegate;
 
 - (void)viewDidLoad
 {
     self.tableView.sectionIndexMinimumDisplayRowCount = 50;
-    
-    NSFetchRequest *fetchRequest = [Food MR_requestAllSortedBy:@"name" ascending:YES];
-
-    self.frc = [[NSFetchedResultsController alloc]
-         initWithFetchRequest:fetchRequest
-         managedObjectContext:[NSManagedObjectContext MR_defaultContext]
-         sectionNameKeyPath:@"name.firstInitialString"
-         cacheName:nil];
-    self.frc.delegate = self;
-    
-    NSError *error;
-    [self.frc performFetch:&error];
+    [self setupDataAccordingToDefaults];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -85,6 +75,59 @@
     [self.delegate lookupViewControllerDidFinish:self];
 }
 
+- (IBAction)sortControlDidChange:(id)sender {
+    NSInteger index = [sender selectedSegmentIndex];
+    switch(index)
+    {
+        case 0:
+            [self setupDataSortedByName];
+            [[NSUserDefaults standardUserDefaults] setObject:@"name" forKey:@"inventorySortOrder"];
+            break;
+        case 1:
+            [self setupDataSortedByDate];
+            [[NSUserDefaults standardUserDefaults] setObject:@"lastAdded" forKey:@"inventorySortOrder"];
+            break;
+    }
+}
+
+- (void)setupDataAccordingToDefaults
+{
+    NSString *sortingPreference = [[NSUserDefaults standardUserDefaults] stringForKey:@"inventorySortOrder"];
+    if([sortingPreference isEqualToString:@"lastAdded"]) {
+        [self setupDataSortedByDate];
+        self.sortControl.selectedSegmentIndex = 1;
+    } else {
+        [self setupDataSortedByName];
+        self.sortControl.selectedSegmentIndex = 0;
+    }
+}
+
+- (void)setupDataSortedByName
+{
+    [self setupDataWithSortKey:@"name" ascending:YES sectionNameKeyPath:@"name.firstInitialString"];
+}
+
+- (void)setupDataSortedByDate
+{
+    [self setupDataWithSortKey:@"lastAdded" ascending:YES sectionNameKeyPath:nil];
+}
+
+- (void)setupDataWithSortKey:(NSString *)sortKey ascending:(BOOL)ascending sectionNameKeyPath:(NSString *)sectionNameKeyPath
+{
+    NSFetchRequest *fetchRequest = [Food MR_requestAllSortedBy:sortKey ascending:ascending];
+    
+    self.frc = [[NSFetchedResultsController alloc]
+                initWithFetchRequest:fetchRequest
+                managedObjectContext:[NSManagedObjectContext MR_defaultContext]
+                sectionNameKeyPath:sectionNameKeyPath
+                cacheName:nil];
+    self.frc.delegate = self;
+    
+    NSError *error;
+    [self.frc performFetch:&error];
+    [self.tableView reloadData];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -112,4 +155,8 @@
     [self.tableView endUpdates];
 }
 
+- (void)viewDidUnload {
+    [self setSortControl:nil];
+    [super viewDidUnload];
+}
 @end

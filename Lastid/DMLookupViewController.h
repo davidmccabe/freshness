@@ -16,5 +16,7 @@
 
 @interface DMLookupViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 - (IBAction)addFoodsPressed:(UIBarButtonItem *)sender;
+- (IBAction)sortControlDidChange:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortControl;
 @property (weak, nonatomic) id <DMLookupViewControllerDelegate> delegate;
 @end

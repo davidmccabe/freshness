@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--Lookup View Controller - Inventory-->
+        <!--Lookup View Controller-->
         <scene sceneID="rf0-F4-fC0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSV-Nb-eaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,13 +105,28 @@
                             <outlet property="delegate" destination="i8D-0e-w3J" id="Td7-UZ-Ngf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Inventory" id="EKa-tJ-9HY">
+                    <navigationItem key="navigationItem" id="EKa-tJ-9HY">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XFm-vY-MT9">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="A—Z"/>
+                                <segment title="Date"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortControlDidChange:" destination="i8D-0e-w3J" eventType="valueChanged" id="uCq-vI-upc"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q5O-t4-PlW">
                             <connections>
                                 <action selector="addFoodsPressed:" destination="i8D-0e-w3J" id="jMP-SU-aAI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="sortControl" destination="XFm-vY-MT9" id="WKS-cc-4Mh"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1833" y="-138"/>
@@ -255,6 +270,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMLookupViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addFoodsPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="sortControlDidChange:"/>
             </relationships>
         </class>
         <class className="DMReviewCell" superclassName="UITableViewCell">
