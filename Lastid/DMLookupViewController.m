@@ -109,7 +109,7 @@
 
 - (void)setupDataSortedByDate
 {
-    [self setupDataWithSortKey:@"lastAdded" ascending:YES sectionNameKeyPath:nil];
+    [self setupDataWithSortKey:@"lastAdded" ascending:NO sectionNameKeyPath:nil];
 }
 
 - (void)setupDataWithSortKey:(NSString *)sortKey ascending:(BOOL)ascending sectionNameKeyPath:(NSString *)sectionNameKeyPath
