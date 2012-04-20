@@ -59,7 +59,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.entryView.layer.borderWidth = 1.0;
-    self.entryView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.entryView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
