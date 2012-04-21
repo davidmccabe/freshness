@@ -11,6 +11,8 @@
 
 @interface DMLookupViewController ()
 @property (strong, nonatomic) NSFetchedResultsController *frc;
+@property (copy, nonatomic) NSString *searchString;
+@property (copy, nonatomic) NSString *sortOrder;
 @end
 
 @implementation DMLookupViewController
@@ -18,12 +20,17 @@
 @synthesize frc;
 @synthesize sortControl;
 @synthesize delegate;
+@synthesize searchString;
+@synthesize sortOrder;
 
 - (void)viewDidLoad
 {
     self.tableView.sectionIndexMinimumDisplayRowCount = 50;
-    [self setupDataAccordingToDefaults];
+    self.searchDisplayController.searchResultsTableView.sectionIndexMinimumDisplayRowCount = 50;
+    [self setupStateFromDefaults];
 }
+
+#pragma mark TABLE VIEW DRECK
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -50,9 +57,11 @@
     return [self.frc sectionForSectionIndexTitle:title atIndex:index];
 }
 
+#pragma mark CONFIGURING CELLS
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
+	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
 
     Food *food = [self.frc objectAtIndexPath:indexPath];
     cell.textLabel.text = food.name;
@@ -70,51 +79,54 @@
     return [dateFormatter stringFromDate:theDate];
 }
 
+#pragma mark ACTIONS
+
 - (IBAction)addFoodsPressed:(UIBarButtonItem *)sender
 {
     [self.delegate lookupViewControllerDidFinish:self];
 }
 
+#pragma mark SORTING, SEARCHING, & FETCHING
+
++ (NSArray *)sortOrdersArray
+{
+    static NSArray *array = nil;
+    if(array == nil) array = [NSArray arrayWithObjects:@"name", @"lastAdded", nil];
+    return array;
+}
+
 - (IBAction)sortControlDidChange:(id)sender {
-    NSInteger index = [sender selectedSegmentIndex];
-    switch(index)
-    {
-        case 0:
-            [self setupDataSortedByName];
-            [[NSUserDefaults standardUserDefaults] setObject:@"name" forKey:@"inventorySortOrder"];
-            break;
-        case 1:
-            [self setupDataSortedByDate];
-            [[NSUserDefaults standardUserDefaults] setObject:@"lastAdded" forKey:@"inventorySortOrder"];
-            break;
-    }
+    self.sortOrder = [[[self class] sortOrdersArray] objectAtIndex:[sender selectedSegmentIndex]];
+    [[NSUserDefaults standardUserDefaults] setObject:self.sortOrder forKey:@"inventorySortOrder"];
+    [self setupFetchedResults];
 }
 
-- (void)setupDataAccordingToDefaults
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)theSearchString
 {
-    NSString *sortingPreference = [[NSUserDefaults standardUserDefaults] stringForKey:@"inventorySortOrder"];
-    if([sortingPreference isEqualToString:@"lastAdded"]) {
-        [self setupDataSortedByDate];
-        self.sortControl.selectedSegmentIndex = 1;
+    self.searchString = theSearchString;
+    [self setupFetchedResults];
+    return YES;
+}
+
+- (void)setupStateFromDefaults
+{
+    self.sortOrder = [[NSUserDefaults standardUserDefaults] stringForKey:@"inventorySortOrder"];
+    self.sortControl.selectedSegmentIndex = [[[self class] sortOrdersArray] indexOfObject:self.sortOrder];
+    [self setupFetchedResults];
+}
+
+- (void)setupFetchedResults
+{
+    BOOL ascending = [self.sortOrder isEqualToString:@"name"];
+    NSString *sectionNameKeyPath = [self.sortOrder isEqualToString:@"name"] ? @"name.firstInitialString" : nil;
+    
+    NSFetchRequest *fetchRequest;
+    if(self.searchString == nil || [self.searchString isEqualToString:@""]) {
+        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:ascending];        
     } else {
-        [self setupDataSortedByName];
-        self.sortControl.selectedSegmentIndex = 0;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", self.searchString];
+        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:ascending withPredicate:predicate];
     }
-}
-
-- (void)setupDataSortedByName
-{
-    [self setupDataWithSortKey:@"name" ascending:YES sectionNameKeyPath:@"name.firstInitialString"];
-}
-
-- (void)setupDataSortedByDate
-{
-    [self setupDataWithSortKey:@"lastAdded" ascending:NO sectionNameKeyPath:nil];
-}
-
-- (void)setupDataWithSortKey:(NSString *)sortKey ascending:(BOOL)ascending sectionNameKeyPath:(NSString *)sectionNameKeyPath
-{
-    NSFetchRequest *fetchRequest = [Food MR_requestAllSortedBy:sortKey ascending:ascending];
     
     self.frc = [[NSFetchedResultsController alloc]
                 initWithFetchRequest:fetchRequest
@@ -127,6 +139,9 @@
     [self.frc performFetch:&error];
     [self.tableView reloadData];
 }
+
+
+#pragma mark DELETION
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
@@ -155,8 +170,4 @@
     [self.tableView endUpdates];
 }
 
-- (void)viewDidUnload {
-    [self setSortControl:nil];
-    [super viewDidUnload];
-}
 @end

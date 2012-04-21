@@ -1,1 +1,1 @@
-Ability to delete items from the inventory
+Deletion in search mode is broken.
