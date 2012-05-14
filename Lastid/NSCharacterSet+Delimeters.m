@@ -1,10 +1,4 @@
-//
-//  NSCharacterSet+Delimeters.m
-//  Lastid
-//
-//  Created by David McCabe on 4/11/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
+//  Copyright (c) 2012 David McCabe. All rights reserved.
 
 #import "NSCharacterSet+Delimeters.h"
 
