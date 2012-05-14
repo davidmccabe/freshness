@@ -10,8 +10,7 @@
 {
     [MagicalRecordHelpers setupCoreDataStack];
 
-    NSDictionary *appDefaults = [NSDictionary
-        dictionaryWithObject:@"name" forKey:@"inventorySortOrder"];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"name" forKey:@"inventorySortOrder"];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
     
     return YES;
