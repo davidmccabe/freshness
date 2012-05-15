@@ -111,21 +111,20 @@
 
 - (void)setupFetchedResults
 {
-    BOOL ascending = [self.sortOrder isEqualToString:@"name"];
-    NSString *sectionNameKeyPath = [self.sortOrder isEqualToString:@"name"] ? @"name.firstInitialString" : nil;
-    
+    BOOL isSortedByName = [self.sortOrder isEqualToString:@"name"];
+
     NSFetchRequest *fetchRequest;
     if(self.searchString == nil || [self.searchString isEqualToString:@""]) {
-        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:ascending];        
+        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName];        
     } else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", self.searchString];
-        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:ascending withPredicate:predicate];
+        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName withPredicate:predicate];
     }
     
     self.frc = [[NSFetchedResultsController alloc]
                 initWithFetchRequest:fetchRequest
                 managedObjectContext:[NSManagedObjectContext MR_defaultContext]
-                sectionNameKeyPath:sectionNameKeyPath
+                sectionNameKeyPath:isSortedByName ? @"name.firstInitialString" : nil
                 cacheName:nil];
     self.frc.delegate = self;
     
