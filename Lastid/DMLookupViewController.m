@@ -24,6 +24,13 @@
     [self setupStateFromDefaults];
 }
 
+- (void)viewDidUnload
+{
+    self.sortControl = nil;
+    self.frc = nil;
+    [super viewDidUnload];
+}
+
 #pragma mark TABLE VIEW DRECK
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

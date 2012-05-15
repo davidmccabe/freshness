@@ -24,7 +24,6 @@
     [self setEntryView:nil];
     [self setLookupButton:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -38,7 +37,8 @@
 
     if ([text isEqualToString:@"\n"]) {
         // The return key is unavoidably enabled when any text is entered, even whitespace, but we ignore whitespace.
-        if (![textView.text isOnlyDelimiters]) [self entryDidFinish];
+        if (![textView.text isOnlyDelimiters])
+            [self entryDidFinish];
         return NO;
     } else {
         return YES;
