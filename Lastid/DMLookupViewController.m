@@ -157,6 +157,15 @@
     }
 }
 
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{    
+    if (type == NSFetchedResultsChangeDelete)
+    {
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController*)controller
 {
     [self.tableView endUpdates];

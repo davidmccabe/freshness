@@ -1,3 +1,2 @@
 Deletion in search mode is broken.
-Can't delete all members of a alphabetical section.
 No toolbar in Review screen anymore.
