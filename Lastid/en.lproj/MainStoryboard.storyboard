@@ -142,7 +142,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="EKa-tJ-9HY">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="tRT-pS-IkB">
+                        <barButtonItem key="rightBarButtonItem" id="tRT-pS-IkB">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XFm-vY-MT9">
                                 <rect key="frame" x="187" y="7" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
