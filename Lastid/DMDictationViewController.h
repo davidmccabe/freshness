@@ -4,7 +4,6 @@
 #import "DMLookupViewController.h"
 #import "DMTokenizingViewController.h"
 
-@interface DMDictationViewController : UIViewController <UITextViewDelegate, DMLookupViewControllerDelegate, DMTokenizingViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *lookupButton;
+@interface DMDictationViewController : UIViewController <UITextViewDelegate, DMTokenizingViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *entryView;
 @end

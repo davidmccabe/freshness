@@ -3,6 +3,7 @@
 #import "DMTokenizingViewController.h"
 #import "NSMutableArray+PhraseArray.h"
 #import "DMReviewCell.h"
+#import "Food.h"
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
@@ -108,13 +109,13 @@
     }
 }
 
-- (IBAction)cancelPressed:(id)sender {
-    [self.delegate tokenizingViewControllerDidCancel];
-}
-
 - (IBAction)donePressed:(id)sender {
-    [self performSegueWithIdentifier:@"DismissReviewSegue" sender:self];
-    [self.delegate tokenizingViewControllerDidYieldPhrases:self.phrases];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    for (NSString *phrase in self.phrases) {
+        [Food enterFoodWithName:phrase];
+    }
+    [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
 - (IBAction)addPressed:(id)sender {

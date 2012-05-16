@@ -15,14 +15,12 @@
 @end
 
 @implementation DMDictationViewController
-@synthesize lookupButton;
 @synthesize entryView;
 @synthesize input;
 
 - (void)viewDidUnload
 {
     [self setEntryView:nil];
-    [self setLookupButton:nil];
     [super viewDidUnload];
 }
 
@@ -47,49 +45,24 @@
 
 - (void)entryDidFinish {
     self.input = self.entryView.text;
-    self.entryView.text = @"";
+//    self.entryView.text = @"";
     [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     self.entryView.layer.borderWidth = 1.0;
     self.entryView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    static BOOL firstTime = TRUE;
-    if(firstTime) [self.entryView becomeFirstResponder];
-    firstTime = FALSE;
+    [self.entryView becomeFirstResponder];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [(id <DMDelegator>)[segue.destinationViewController visibleViewController] setDelegate:self];
-}
-
-- (void)lookupViewControllerDidFinish:(DMLookupViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [(id <DMDelegator>)segue.destinationViewController setDelegate:self];
 }
 
 - (NSString *) stringToBeTokenized
 {
     return self.input;
-}
-
-- (void) tokenizingViewControllerDidCancel
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
-
-- (void) tokenizingViewControllerDidYieldPhrases:(NSArray *)phrases
-{
-    for (NSString *phrase in phrases) {
-        [Food enterFoodWithName:phrase];
-    }
-    [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
 @end

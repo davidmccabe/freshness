@@ -13,7 +13,6 @@
 
 @synthesize frc;
 @synthesize sortControl;
-@synthesize delegate;
 @synthesize searchString;
 @synthesize sortOrder;
 
@@ -78,13 +77,6 @@
     [dateFormatter setDateFormat:formatString];
 
     return [dateFormatter stringFromDate:theDate];
-}
-
-#pragma mark ACTIONS
-
-- (IBAction)addFoodsPressed:(UIBarButtonItem *)sender
-{
-    [self.delegate lookupViewControllerDidFinish:self];
 }
 
 #pragma mark SORTING, SEARCHING, & FETCHING
