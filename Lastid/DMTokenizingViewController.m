@@ -2,7 +2,7 @@
 
 #import "DMTokenizingViewController.h"
 #import "NSMutableArray+PhraseArray.h"
-#import "DMReviewCell.h"
+#import "DMTextFieldCell.h"
 #import "DMFood.h"
 
 @interface DMTokenizingViewController ()
@@ -48,7 +48,7 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [[(DMReviewCell*)[self.tableView cellForRowAtIndexPath:indexPath] textField] becomeFirstResponder];
+    [[(DMTextFieldCell*)[self.tableView cellForRowAtIndexPath:indexPath] textField] becomeFirstResponder];
 }
 
 - (IBAction)donePressed:(id)sender {
@@ -123,7 +123,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	DMReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
+	DMTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
 	
 	cell.textField.text = [self.phrases objectAtIndex:indexPath.row];
     cell.textField.tag = indexPath.row;
@@ -145,7 +145,7 @@
 
 - (void)updateRowTags {
     NSArray *visibleCells = [self.tableView visibleCells];  
-    for (DMReviewCell *cell in visibleCells) {
+    for (DMTextFieldCell *cell in visibleCells) {
         cell.textField.tag = [[self.tableView indexPathForCell:cell] row];
     }
 }

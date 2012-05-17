@@ -38,7 +38,7 @@
 		6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */; };
 		6361DA131536273900309770 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA121536273900309770 /* NSString+Utilities.m */; };
 		6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */; };
-		6361DA191537C46900309770 /* DMReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMReviewCell.m */; };
+		6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMTextFieldCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,8 +100,8 @@
 		6361DA121536273900309770 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
 		6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+Delimeters.h"; sourceTree = "<group>"; };
 		6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+Delimeters.m"; sourceTree = "<group>"; };
-		6361DA171537C46800309770 /* DMReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMReviewCell.h; sourceTree = "<group>"; };
-		6361DA181537C46800309770 /* DMReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReviewCell.m; sourceTree = "<group>"; };
+		6361DA171537C46800309770 /* DMTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DMTextFieldCell.h; sourceTree = "<group>"; };
+		6361DA181537C46800309770 /* DMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTextFieldCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +169,8 @@
 				6361D9B51530EA4900309770 /* DMDictationViewController.m */,
 				6361D9FE1535006E00309770 /* DMTokenizingViewController.h */,
 				6361D9FF1535006E00309770 /* DMTokenizingViewController.m */,
-				6361DA171537C46800309770 /* DMReviewCell.h */,
-				6361DA181537C46800309770 /* DMReviewCell.m */,
+				6361DA171537C46800309770 /* DMTextFieldCell.h */,
+				6361DA181537C46800309770 /* DMTextFieldCell.m */,
 				6361D9A61530EA4900309770 /* Supporting Files */,
 			);
 			path = Lastid;
@@ -330,7 +330,7 @@
 				6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */,
 				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
 				6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */,
-				6361DA191537C46900309770 /* DMReviewCell.m in Sources */,
+				6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

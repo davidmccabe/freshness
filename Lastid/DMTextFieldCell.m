@@ -1,7 +1,7 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
-#import "DMReviewCell.h"
+#import "DMTextFieldCell.h"
 
-@implementation DMReviewCell
+@implementation DMTextFieldCell
 @synthesize textField;
 @end
