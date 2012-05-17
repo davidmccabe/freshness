@@ -39,6 +39,30 @@
     [self.view addSubview:toolbar];
 }
 
+
+# pragma mark ACTIONS
+
+- (IBAction)addPressed:(id)sender {
+    NSUInteger row = [self.phrases count];
+    [self.phrases addObject:@""];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[(DMReviewCell*)[self.tableView cellForRowAtIndexPath:indexPath] textField] becomeFirstResponder];
+}
+
+- (IBAction)donePressed:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    for (NSString *phrase in self.phrases) {
+        [DMFood enterFoodWithName:phrase];
+    }
+    [[NSManagedObjectContext MR_defaultContext] save:NULL];
+}
+
+
+# pragma mark ROW-MERGING GESTURE
+
 - (void)handleJoinGesture:(UIGestureRecognizer *)recognizer
 {
     if (recognizer.state != UIGestureRecognizerStateEnded) return;
@@ -68,6 +92,9 @@
     [self performSelector:@selector(updateRowTags) withObject:nil afterDelay:0.0];
 }
 
+
+#pragma mark TABLE VIEW DRECK
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -76,16 +103,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.phrases.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	DMReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
-	
-	cell.textField.text = [self.phrases objectAtIndex:indexPath.row];
-    cell.textField.tag = indexPath.row;
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,6 +116,19 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self performSelector:@selector(updateRowTags) withObject:nil afterDelay:0.0];
     }   
+}
+
+
+#pragma mark EDITABLE TEXT CELLS
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	DMReviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
+	
+	cell.textField.text = [self.phrases objectAtIndex:indexPath.row];
+    cell.textField.tag = indexPath.row;
+    
+    return cell;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -120,21 +150,4 @@
     }
 }
 
-- (IBAction)donePressed:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    for (NSString *phrase in self.phrases) {
-        [DMFood enterFoodWithName:phrase];
-    }
-    [[NSManagedObjectContext MR_defaultContext] save:NULL];
-}
-
-- (IBAction)addPressed:(id)sender {
-    NSUInteger row = [self.phrases count];
-    [self.phrases addObject:@""];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [[(DMReviewCell*)[self.tableView cellForRowAtIndexPath:indexPath] textField] becomeFirstResponder];
-}
 @end
