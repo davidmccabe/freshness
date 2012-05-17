@@ -45,8 +45,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DMTokenizingViewController *destination = (DMTokenizingViewController *)segue.destinationViewController;
-    [destination setStringToBeTokenized:self.entryView.text];
+    [segue.destinationViewController setStringToBeTokenized:self.entryView.text];
 }
 
 @end
