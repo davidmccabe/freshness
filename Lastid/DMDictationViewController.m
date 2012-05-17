@@ -4,24 +4,24 @@
 #import "DMDictationViewController.h"
 #import "DMFood.h"
 #import "NSString+Utilities.h"
-
-@protocol DMDelegator <NSObject>
-- (void)setDelegate:(id)theDelegate;
-@end
+#import "DMTokenizingViewController.h"
 
 @interface DMDictationViewController ()
-- (void)entryDidFinish;
-@property (copy, nonatomic) NSString *input;
 @end
 
 @implementation DMDictationViewController
 @synthesize entryView;
-@synthesize input;
 
 - (void)viewDidUnload
 {
     [self setEntryView:nil];
     [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.entryView.layer.borderWidth = 1.0;
+    self.entryView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+    [self.entryView becomeFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -36,33 +36,17 @@
     if ([text isEqualToString:@"\n"]) {
         // The return key is unavoidably enabled when any text is entered, even whitespace, but we ignore whitespace.
         if (![textView.text isOnlyDelimiters])
-            [self entryDidFinish];
+            [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
         return NO;
     } else {
         return YES;
     }
 }
 
-- (void)entryDidFinish {
-    self.input = self.entryView.text;
-//    self.entryView.text = @"";
-    [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.entryView.layer.borderWidth = 1.0;
-    self.entryView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
-    [self.entryView becomeFirstResponder];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [(id <DMDelegator>)segue.destinationViewController setDelegate:self];
-}
-
-- (NSString *) stringToBeTokenized
-{
-    return self.input;
+    DMTokenizingViewController *destination = (DMTokenizingViewController *)segue.destinationViewController;
+    [destination setStringToBeTokenized:self.entryView.text];
 }
 
 @end

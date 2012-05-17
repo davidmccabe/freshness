@@ -13,11 +13,9 @@
 
 @synthesize phrases;
 
-@synthesize delegate;
-- (void)setDelegate:(id<DMTokenizingViewControllerDelegate>)aDelegate
+- (void)setStringToBeTokenized:(NSString *)theString
 {
-    delegate = aDelegate;
-    self.phrases = [NSMutableArray phraseArrayFromString:[delegate stringToBeTokenized]];
+    self.phrases = [NSMutableArray phraseArrayFromString:theString];
 }
 
 - (void)viewDidLoad

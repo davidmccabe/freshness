@@ -2,14 +2,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class DMTokenizingViewController;
-
-@protocol DMTokenizingViewControllerDelegate <NSObject>
-- (NSString *) stringToBeTokenized;
-@end
-
 @interface DMTokenizingViewController : UITableViewController <UITextFieldDelegate>
 - (IBAction)donePressed:(id)sender;
 - (IBAction)addPressed:(id)sender;
-@property (weak, nonatomic) id <DMTokenizingViewControllerDelegate> delegate;
+- (void)setStringToBeTokenized:(NSString *)theString;
 @end
