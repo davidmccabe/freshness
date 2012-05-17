@@ -1,2 +1,1 @@
 Deletion in search mode is broken.
-Wrong back button labels.

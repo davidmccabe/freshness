@@ -44,7 +44,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Entry" image="first" id="7"/>
-                    <navigationItem key="navigationItem" title="Freshness" id="E9p-uH-1Qj"/>
+                    <navigationItem key="navigationItem" title="Freshness" id="E9p-uH-1Qj">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="poO-t4-nUV"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="entryView" destination="PKr-3s-vyf" id="66Z-uW-lec"/>
                         <segue destination="Bhi-aP-u3v" kind="push" identifier="ShowReviewSegue" id="iYz-Y7-4hB"/>
@@ -253,7 +255,9 @@ You use dictation to tell it what goes in the fridge—hands free—and it uses 
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Freshness" id="KJx-oP-cJi"/>
+                    <navigationItem key="navigationItem" title="Freshness" id="KJx-oP-cJi">
+                        <barButtonItem key="backBarButtonItem" title="Main" id="lkg-eA-nH9"/>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="91" y="-263"/>
