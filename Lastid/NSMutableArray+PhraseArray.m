@@ -11,7 +11,7 @@
     NSMutableArray *tokens = [NSMutableArray arrayWithArray:[aString componentsSeparatedByDelimiters]];
     [tokens mapUsingSelector:@selector(stringByTrimmingDelimiters)];
     [tokens mapUsingSelector:@selector(capitalizedString)];
-    [tokens filterUsingSelector:@selector(isOnlyDelimiters)];
+    [tokens rejectUsingSelector:@selector(isOnlyDelimiters)];
     tokens = [tokens phraseArrayByJoiningExistingPhrases];
     return tokens;
 }
@@ -33,15 +33,16 @@
 	NSMutableArray *phrase = [NSMutableArray array];
 	for(NSString *word in self) {
         NSMutableArray *attemptedNextPhrase = [[phrase arrayByAddingObject:word] mutableCopy];
-        BOOL isPrefixOfExistingName = [DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase phraseString]];
-		if (! isPrefixOfExistingName ) {
-			if(phrase.count > 0) [result addObject:phrase];
-			phrase = [NSMutableArray array];
-		}
-        phrase = [NSMutableArray arrayWithArray:[phrase arrayByAddingObject:word]];
+		if (! [DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase phraseString]] ) {
+            [result addObject:phrase];
+			phrase = [NSMutableArray arrayWithObject:word];
+		} else {
+            phrase = attemptedNextPhrase;
+        }
 	}
 	[result addObject:phrase];
     [result mapUsingSelector:@selector(phraseString)];
+    [result rejectUsingSelector:@selector(isOnlyDelimiters)];
 	return result;
 }
 
@@ -62,7 +63,7 @@
     }
 }
 
-- (void)filterUsingSelector:(SEL)aSelector
+- (void)rejectUsingSelector:(SEL)aSelector
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         if ([[self objectAtIndex:i] performSelector:aSelector]) {
