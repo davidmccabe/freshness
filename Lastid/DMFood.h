@@ -10,6 +10,6 @@
 @property (nonatomic, retain) NSDate * lastAdded;
 
 + (DMFood *)enterFoodWithName:(NSString *)name;
-+ (BOOL)foodExistsWhoseNameHasPrefix:(NSString *)prefix;
++ (BOOL)foodExistsWhoseNameBeginsWith:(NSString *)prefix;
 
 @end

@@ -33,8 +33,8 @@
 	NSMutableArray *phrase = [NSMutableArray array];
 	for(NSString *word in self) {
         NSArray *attemptedNextPhrase = [phrase arrayByAddingObject:word];
-        BOOL isPrefixOfExistingWord = [DMFood foodExistsWhoseNameHasPrefix:[attemptedNextPhrase componentsJoinedByString:@" "]];
-		if (! isPrefixOfExistingWord ) {
+        BOOL isPrefixOfExistingName = [DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase componentsJoinedByString:@" "]];
+		if (! isPrefixOfExistingName ) {
 			if(phrase.count > 0) [result addObject:phrase];
 			phrase = [NSMutableArray array];
 		}

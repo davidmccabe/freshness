@@ -21,7 +21,7 @@
     return food;
 }
 
-+ (BOOL)foodExistsWhoseNameHasPrefix:(NSString *)prefix
++ (BOOL)foodExistsWhoseNameBeginsWith:(NSString *)prefix
 {
     NSPredicate *p = [NSPredicate predicateWithFormat:@"name beginswith %@", prefix];
     return [DMFood MR_countOfEntitiesWithPredicate:p] > 0;
