@@ -1,2 +1,2 @@
 Deletion in search mode is broken.
-No toolbar in Review screen anymore.
+Wrong back button labels.

@@ -22,10 +22,23 @@
 
 - (void)viewDidLoad
 {
+    // Gesture recognizer:
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoinGesture:)];
     recognizer.minimumPressDuration = 0.1;
     recognizer.numberOfTouchesRequired = 2;
     [self.tableView addGestureRecognizer:recognizer];
+    
+    // Toolbar: I can't find a way to show the navigation controller's toolbar on
+    // only one screen without getting bad-looking animations.
+    // The items are loaded by the storyboard into the navigation controller's toolbar, even though it's hidden.
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    [toolbar setItems:self.toolbarItems];
+    
+    [toolbar sizeToFit];
+    CGRect r = toolbar.frame;
+    r.origin.y = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - toolbar.frame.size.height;
+    toolbar.frame = r;
+    [self.view addSubview:toolbar];
 }
 
 - (void)handleJoinGesture:(UIGestureRecognizer *)recognizer
