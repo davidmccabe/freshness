@@ -5,4 +5,5 @@
 @interface NSMutableArray (PhraseArray)
 + (NSMutableArray *)phraseArrayFromString:(NSString *)aString;
 - (void)mergePhraseAtIndex:(NSUInteger)firstIndex withPhraseAtIndex:(NSUInteger)secondIndex;
+- (NSString *)phraseString;
 @end

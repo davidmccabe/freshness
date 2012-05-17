@@ -32,8 +32,8 @@
     
 	NSMutableArray *phrase = [NSMutableArray array];
 	for(NSString *word in self) {
-        NSArray *attemptedNextPhrase = [phrase arrayByAddingObject:word];
-        BOOL isPrefixOfExistingName = [DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase componentsJoinedByString:@" "]];
+        NSMutableArray *attemptedNextPhrase = [[phrase arrayByAddingObject:word] mutableCopy];
+        BOOL isPrefixOfExistingName = [DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase phraseString]];
 		if (! isPrefixOfExistingName ) {
 			if(phrase.count > 0) [result addObject:phrase];
 			phrase = [NSMutableArray array];
@@ -41,8 +41,13 @@
         phrase = [NSMutableArray arrayWithArray:[phrase arrayByAddingObject:word]];
 	}
 	[result addObject:phrase];
-    [result mapUsingSelector:@selector(componentsJoinedByString:) withObject:@" "];
+    [result mapUsingSelector:@selector(phraseString)];
 	return result;
+}
+
+- (NSString *)phraseString
+{
+    return [self componentsJoinedByString:@" "];
 }
 
 // Clang doesn't know that we're using performSelector: with selectors that return
@@ -54,13 +59,6 @@
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector]];
-    }
-}
-
-- (void)mapUsingSelector:(SEL)aSelector withObject:(id)anObject
-{
-    for (NSUInteger i = 0; i < self.count; i++) {
-        [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector withObject:anObject]];
     }
 }
 
