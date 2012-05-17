@@ -2,7 +2,7 @@
 
 #import "NSMutableArray+PhraseArray.h"
 #import "NSString+Utilities.h"
-#import "Food.h"
+#import "DMFood.h"
 
 @implementation NSMutableArray (PhraseArray)
 
@@ -33,7 +33,7 @@
 	NSMutableArray *phrase = [NSMutableArray array];
 	for(NSString *word in self) {
         NSArray *attemptedNextPhrase = [phrase arrayByAddingObject:word];
-        BOOL isPrefixOfExistingWord = [Food foodExistsWhoseNameHasPrefix:[attemptedNextPhrase componentsJoinedByString:@" "]];
+        BOOL isPrefixOfExistingWord = [DMFood foodExistsWhoseNameHasPrefix:[attemptedNextPhrase componentsJoinedByString:@" "]];
 		if (! isPrefixOfExistingWord ) {
 			if(phrase.count > 0) [result addObject:phrase];
 			phrase = [NSMutableArray array];

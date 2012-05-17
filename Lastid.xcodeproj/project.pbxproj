@@ -17,7 +17,7 @@
 		6361D9B61530EA4900309770 /* DMDictationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9B51530EA4900309770 /* DMDictationViewController.m */; };
 		6361D9BD1530EA4900309770 /* DMLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9BC1530EA4900309770 /* DMLookupViewController.m */; };
 		6361D9C91530FE0800309770 /* Lastid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */; };
-		6361D9CC1530FE6F00309770 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9CB1530FE6F00309770 /* Food.m */; };
+		6361D9CC1530FE6F00309770 /* DMFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9CB1530FE6F00309770 /* DMFood.m */; };
 		6361D9CE1531017F00309770 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9CD1531017F00309770 /* CoreData.framework */; };
 		6361D9F0153126F500309770 /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9D3153126F500309770 /* NSAttributeDescription+MagicalDataImport.m */; };
 		6361D9F1153126F500309770 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9D5153126F500309770 /* NSEntityDescription+MagicalDataImport.m */; };
@@ -58,8 +58,8 @@
 		6361D9BB1530EA4900309770 /* DMLookupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMLookupViewController.h; sourceTree = "<group>"; };
 		6361D9BC1530EA4900309770 /* DMLookupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMLookupViewController.m; sourceTree = "<group>"; };
 		6361D9C81530FE0800309770 /* Lastid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lastid.xcdatamodel; sourceTree = "<group>"; };
-		6361D9CA1530FE6F00309770 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
-		6361D9CB1530FE6F00309770 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		6361D9CA1530FE6F00309770 /* DMFood.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DMFood.h; sourceTree = "<group>"; };
+		6361D9CB1530FE6F00309770 /* DMFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFood.m; sourceTree = "<group>"; };
 		6361D9CD1531017F00309770 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6361D9D2153126F500309770 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
 		6361D9D3153126F500309770 /* NSAttributeDescription+MagicalDataImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributeDescription+MagicalDataImport.m"; sourceTree = "<group>"; };
@@ -158,8 +158,8 @@
 				6361DA121536273900309770 /* NSString+Utilities.m */,
 				6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */,
 				6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */,
-				6361D9CA1530FE6F00309770 /* Food.h */,
-				6361D9CB1530FE6F00309770 /* Food.m */,
+				6361D9CA1530FE6F00309770 /* DMFood.h */,
+				6361D9CB1530FE6F00309770 /* DMFood.m */,
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
 				6361D9AF1530EA4900309770 /* DMAppDelegate.m */,
@@ -311,7 +311,7 @@
 				6361D9B61530EA4900309770 /* DMDictationViewController.m in Sources */,
 				6361D9BD1530EA4900309770 /* DMLookupViewController.m in Sources */,
 				6361D9C91530FE0800309770 /* Lastid.xcdatamodeld in Sources */,
-				6361D9CC1530FE6F00309770 /* Food.m in Sources */,
+				6361D9CC1530FE6F00309770 /* DMFood.m in Sources */,
 				6361D9F0153126F500309770 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				6361D9F1153126F500309770 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				6361D9F2153126F500309770 /* NSNumber+MagicalDataImport.m in Sources */,

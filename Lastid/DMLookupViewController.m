@@ -1,7 +1,7 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
 #import "DMLookupViewController.h"
-#import "Food.h"
+#import "DMFood.h"
 
 @interface DMLookupViewController ()
 @property (strong, nonatomic) NSFetchedResultsController *frc;
@@ -63,7 +63,7 @@
 {
 	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
 
-    Food *food = [self.frc objectAtIndexPath:indexPath];
+    DMFood *food = [self.frc objectAtIndexPath:indexPath];
     cell.textLabel.text = food.name;
 	cell.detailTextLabel.text = [self labelStringForDate:food.lastAdded];
     
@@ -114,10 +114,10 @@
 
     NSFetchRequest *fetchRequest;
     if(self.searchString == nil || [self.searchString isEqualToString:@""]) {
-        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName];        
+        fetchRequest = [DMFood MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName];        
     } else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", self.searchString];
-        fetchRequest = [Food MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName withPredicate:predicate];
+        fetchRequest = [DMFood MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName withPredicate:predicate];
     }
     
     self.frc = [[NSFetchedResultsController alloc]
@@ -138,7 +138,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Food *doomed = [self.frc objectAtIndexPath:indexPath];
+        DMFood *doomed = [self.frc objectAtIndexPath:indexPath];
         [doomed MR_deleteEntity];
         [[NSManagedObjectContext MR_defaultContext] save:NULL];
     }

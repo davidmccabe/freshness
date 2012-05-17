@@ -2,7 +2,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "DMDictationViewController.h"
-#import "Food.h"
+#import "DMFood.h"
 #import "NSString+Utilities.h"
 
 @protocol DMDelegator <NSObject>

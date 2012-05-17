@@ -3,7 +3,7 @@
 #import "DMTokenizingViewController.h"
 #import "NSMutableArray+PhraseArray.h"
 #import "DMReviewCell.h"
-#import "Food.h"
+#import "DMFood.h"
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
@@ -126,7 +126,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
     
     for (NSString *phrase in self.phrases) {
-        [Food enterFoodWithName:phrase];
+        [DMFood enterFoodWithName:phrase];
     }
     [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
