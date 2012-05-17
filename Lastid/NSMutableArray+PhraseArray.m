@@ -18,10 +18,10 @@
 
 - (void)mergePhraseAtIndex:(NSUInteger)firstIndex withPhraseAtIndex:(NSUInteger)secondIndex
 {
-    NSString *firstPhrase = [self objectAtIndex:firstIndex];
-    NSString *secondPhrase = [self objectAtIndex:secondIndex];
-    NSString *newPhrase = [NSString stringWithFormat:@"%@ %@", firstPhrase, secondPhrase];
-    
+    NSString *newPhrase = [NSString stringWithFormat:@"%@ %@",
+                                    [self objectAtIndex:firstIndex],
+                                    [self objectAtIndex:secondIndex]];
+
     [self replaceObjectAtIndex:firstIndex withObject:newPhrase];
     [self removeObjectAtIndex:secondIndex];
 }
