@@ -2,12 +2,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "DMDictationViewController.h"
-#import "DMFood.h"
 #import "NSString+Utilities.h"
 #import "DMTokenizingViewController.h"
-
-@interface DMDictationViewController ()
-@end
 
 @implementation DMDictationViewController
 @synthesize entryView;
