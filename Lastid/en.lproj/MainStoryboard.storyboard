@@ -168,11 +168,11 @@ You use dictation to tell it what goes in the fridge—hands free—and it uses 
             </objects>
             <point key="canvasLocation" x="697" y="330"/>
         </scene>
-        <!--Main Menu View Controller - Foo-->
+        <!--Table View Controller - Foo-->
         <scene sceneID="4tZ-29-qli">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eee-Ow-W0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController title="Foo" id="Anj-kQ-OjN" customClass="DMMainMenuViewController" sceneMemberID="viewController">
+                <tableViewController title="Foo" id="Anj-kQ-OjN" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JKb-Sj-Djz">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,9 +370,6 @@ You use dictation to tell it what goes in the fridge—hands free—and it uses 
                 <relationship kind="action" name="sortControlDidChange:"/>
                 <relationship kind="outlet" name="sortControl" candidateClass="UISegmentedControl"/>
             </relationships>
-        </class>
-        <class className="DMMainMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DMMainMenuViewController.h"/>
         </class>
         <class className="DMTextFieldCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DMTextFieldCell.h"/>

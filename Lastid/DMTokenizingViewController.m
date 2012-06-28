@@ -7,13 +7,11 @@
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
-@property (strong, nonatomic) UIToolbar *toolbar;
 @end
 
 @implementation DMTokenizingViewController
 
 @synthesize phrases;
-@synthesize toolbar;
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
@@ -22,7 +20,6 @@
 
 - (void)viewDidLoad
 {
-    // Gesture recognizer:
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoinGesture:)];
     recognizer.minimumPressDuration = 0.1;
     recognizer.numberOfTouchesRequired = 2;
@@ -31,38 +28,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Toolbar: I can't find a way to show the navigation controller's toolbar on
-    // only one screen without getting bad-looking animations.
-    // The items are loaded by the storyboard into the navigation controller's toolbar, even though it's hidden.
-    self.toolbar = [[UIToolbar alloc] init];
-    [self.toolbar setItems:self.toolbarItems];
-    
-    [self.toolbar sizeToFit];
-    CGRect r = self.toolbar.frame;
-    r.origin.y = self.navigationController.view.frame.size.height - r.size.height;
-    self.toolbar.frame = r;
-    [self.navigationController.view addSubview:self.toolbar];
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.toolbar.frame.size.height, 0);
+    [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [UIView animateWithDuration:0.3
-                          delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-        animations:^(void){
-            CGRect r = self.toolbar.frame;
-            r.origin.y += r.size.height;
-            self.toolbar.frame = r;
-        }
-        completion:^(BOOL finished){
-            [self.toolbar removeFromSuperview];
-            self.toolbar = nil;
-        }
-    ];
+    // self.navigationController has already been set to nil here.
+    // We can't do this in viewWillDisappear without getting an ugly animation.
+    UINavigationController *theNavigationController = (UINavigationController *)UIApplication.sharedApplication.keyWindow.rootViewController;
+    [theNavigationController setToolbarHidden:YES animated:animated];
 }
-
 
 # pragma mark ACTIONS
 

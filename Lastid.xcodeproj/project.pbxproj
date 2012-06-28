@@ -39,7 +39,6 @@
 		6361DA131536273900309770 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA121536273900309770 /* NSString+Utilities.m */; };
 		6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */; };
 		6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMTextFieldCell.m */; };
-		63FBF4CF159D015600811366 /* DMMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF4CE159D015600811366 /* DMMainMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,8 +102,6 @@
 		6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+Delimeters.m"; sourceTree = "<group>"; };
 		6361DA171537C46800309770 /* DMTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTextFieldCell.h; sourceTree = "<group>"; };
 		6361DA181537C46800309770 /* DMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTextFieldCell.m; sourceTree = "<group>"; };
-		63FBF4CD159D015600811366 /* DMMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMainMenuViewController.h; sourceTree = "<group>"; };
-		63FBF4CE159D015600811366 /* DMMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMainMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +163,6 @@
 				6361D9CB1530FE6F00309770 /* DMFood.m */,
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
 				6361D9AF1530EA4900309770 /* DMAppDelegate.m */,
-				63FBF4CD159D015600811366 /* DMMainMenuViewController.h */,
-				63FBF4CE159D015600811366 /* DMMainMenuViewController.m */,
 				6361D9BB1530EA4900309770 /* DMLookupViewController.h */,
 				6361D9BC1530EA4900309770 /* DMLookupViewController.m */,
 				6361D9B41530EA4900309770 /* DMDictationViewController.h */,
@@ -336,7 +331,6 @@
 				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
 				6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */,
 				6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */,
-				63FBF4CF159D015600811366 /* DMMainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
