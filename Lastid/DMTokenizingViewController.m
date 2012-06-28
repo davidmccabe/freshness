@@ -7,20 +7,17 @@
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
+@property (strong, nonatomic) UIToolbar *toolbar;
 @end
 
 @implementation DMTokenizingViewController
 
 @synthesize phrases;
+@synthesize toolbar;
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
     self.phrases = [NSMutableArray phraseArrayFromString:theString];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationController.toolbarHidden = NO;
 }
 
 - (void)viewDidLoad
@@ -30,18 +27,40 @@
     recognizer.minimumPressDuration = 0.1;
     recognizer.numberOfTouchesRequired = 2;
     [self.tableView addGestureRecognizer:recognizer];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     // Toolbar: I can't find a way to show the navigation controller's toolbar on
     // only one screen without getting bad-looking animations.
     // The items are loaded by the storyboard into the navigation controller's toolbar, even though it's hidden.
-/*    UIToolbar *toolbar = [[UIToolbar alloc] init];
-    [toolbar setItems:self.toolbarItems];
+    self.toolbar = [[UIToolbar alloc] init];
+    [self.toolbar setItems:self.toolbarItems];
     
-    [toolbar sizeToFit];
-    CGRect r = toolbar.frame;
-    r.origin.y = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - toolbar.frame.size.height;
-    toolbar.frame = r;
-    [self.view addSubview:toolbar];*/
+    [self.toolbar sizeToFit];
+    CGRect r = self.toolbar.frame;
+    r.origin.y = self.navigationController.view.frame.size.height - r.size.height;
+    self.toolbar.frame = r;
+    [self.navigationController.view addSubview:self.toolbar];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.toolbar.frame.size.height, 0);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+        animations:^(void){
+            CGRect r = self.toolbar.frame;
+            r.origin.y += r.size.height;
+            self.toolbar.frame = r;
+        }
+        completion:^(BOOL finished){
+            [self.toolbar removeFromSuperview];
+            self.toolbar = nil;
+        }
+    ];
 }
 
 
