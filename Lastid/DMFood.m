@@ -10,15 +10,19 @@
 
 + (DMFood *)enterFoodWithName:(NSString *)name
 {
-    if ([name isEqualToString:@""]) return nil;
-    
     DMFood *food = [DMFood MR_findFirstByAttribute:@"name" withValue:name];
     if (!food) {
         food = [DMFood MR_createEntity];
         food.name = name;
     }
-    [food setLastAdded:[NSDate date]];
-    return food;
+    food.lastAdded = [NSDate date];
+
+    if ([food validateForUpdate:NULL]) {
+        return food;
+    } else {
+        [food MR_deleteEntity];
+        return NULL;
+    }
 }
 
 + (BOOL)foodExistsWhoseNameBeginsWith:(NSString *)prefix
