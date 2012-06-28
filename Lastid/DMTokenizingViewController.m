@@ -18,6 +18,11 @@
     self.phrases = [NSMutableArray phraseArrayFromString:theString];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.toolbarHidden = NO;
+}
+
 - (void)viewDidLoad
 {
     // Gesture recognizer:
@@ -29,14 +34,14 @@
     // Toolbar: I can't find a way to show the navigation controller's toolbar on
     // only one screen without getting bad-looking animations.
     // The items are loaded by the storyboard into the navigation controller's toolbar, even though it's hidden.
-    UIToolbar *toolbar = [[UIToolbar alloc] init];
+/*    UIToolbar *toolbar = [[UIToolbar alloc] init];
     [toolbar setItems:self.toolbarItems];
     
     [toolbar sizeToFit];
     CGRect r = toolbar.frame;
     r.origin.y = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - toolbar.frame.size.height;
     toolbar.frame = r;
-    [self.view addSubview:toolbar];
+    [self.view addSubview:toolbar];*/
 }
 
 

@@ -14,14 +14,16 @@
     [super viewDidUnload];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     self.entryView.layer.borderWidth = 1.0;
     self.entryView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
     [self.entryView becomeFirstResponder];
 }
 
 // Finish editing when the "Return" key on the keyboard is struck.
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
     if (textView != self.entryView) return YES;
 
     if ([text isEqualToString:@"\n"]) {
