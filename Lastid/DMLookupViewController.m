@@ -18,8 +18,10 @@
 
 - (void)viewDidLoad
 {
+    // This can be set in the storyboard, but doing so has no effect:
     self.tableView.sectionIndexMinimumDisplayRowCount = 50;
     self.searchDisplayController.searchResultsTableView.sectionIndexMinimumDisplayRowCount = 50;
+    
     [self setupStateFromDefaults];
 }
 
@@ -103,6 +105,7 @@
 
 - (void)setupStateFromDefaults
 {
+    self.searchString = @"";
     self.sortOrder = [[NSUserDefaults standardUserDefaults] stringForKey:@"inventorySortOrder"];
     self.sortControl.selectedSegmentIndex = [[[self class] sortOrdersArray] indexOfObject:self.sortOrder];
     [self setupFetchedResults];
@@ -113,7 +116,7 @@
     BOOL isSortedByName = [self.sortOrder isEqualToString:@"name"];
 
     NSFetchRequest *fetchRequest;
-    if(self.searchString == nil || [self.searchString isEqualToString:@""]) {
+    if([self.searchString isEqualToString:@""]) {
         fetchRequest = [DMFood MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName];        
     } else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", self.searchString];
@@ -121,14 +124,13 @@
     }
     
     self.frc = [[NSFetchedResultsController alloc]
-                initWithFetchRequest:fetchRequest
-                managedObjectContext:[NSManagedObjectContext MR_defaultContext]
-                sectionNameKeyPath:isSortedByName ? @"name.firstInitialString" : nil
-                cacheName:nil];
+                    initWithFetchRequest:fetchRequest
+                    managedObjectContext:[NSManagedObjectContext MR_defaultContext]
+                    sectionNameKeyPath:isSortedByName ? @"name.firstInitialString" : nil
+                    cacheName:nil];
     self.frc.delegate = self;
     
-    NSError *error;
-    [self.frc performFetch:&error];
+    [self.frc performFetch:NULL];
     [self.tableView reloadData];
 }
 
@@ -138,8 +140,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        DMFood *doomed = [self.frc objectAtIndexPath:indexPath];
-        [doomed MR_deleteEntity];
+        [[self.frc objectAtIndexPath:indexPath] MR_deleteEntity];
         [[NSManagedObjectContext MR_defaultContext] save:NULL];
     }
 }
