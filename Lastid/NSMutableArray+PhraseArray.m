@@ -6,6 +6,12 @@
 
 @implementation NSMutableArray (PhraseArray)
 
+/*
+ Attempts to clean up the given string as much as possible
+ and returns an array of capitalized words or phrases, where the phrases
+ are formed from consecutive words from the input that are thought to
+ represent a single item.
+*/
 + (NSMutableArray *)phraseArrayFromString:(NSString *)aString
 {
     NSMutableArray *tokens = [NSMutableArray arrayWithArray:[aString componentsSeparatedByDelimiters]];
@@ -26,6 +32,14 @@
     [self removeObjectAtIndex:secondIndex];
 }
 
+/*
+ Joins adjacent words if the resulting phrase already exists in the database.
+ E.g., if the database contains the phrases "Green Beans" and "Fresh Sheep Milk",
+ then this maps
+    ["Green", "Beans", "Juice", "Fresh", "Sheep", "Milk"]
+ to
+    ["Green Beans", "Juice", "Fresh Sheep Milk"].
+*/
 - (NSMutableArray *)phraseArrayByJoiningExistingPhrases
 {
 	NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self count]];
@@ -33,11 +47,11 @@
 	NSMutableArray *phrase = [NSMutableArray array];
 	for(NSString *word in self) {
         NSMutableArray *attemptedNextPhrase = [[phrase arrayByAddingObject:word] mutableCopy];
-		if (! [DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase phraseString]] ) {
+		if ([DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase phraseString]]) {
+            phrase = attemptedNextPhrase;
+		} else {
             [result addObject:phrase];
 			phrase = [NSMutableArray arrayWithObject:word];
-		} else {
-            phrase = attemptedNextPhrase;
         }
 	}
 	[result addObject:phrase];
