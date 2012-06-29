@@ -84,7 +84,8 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     if (self.indexPathOfNewRow) {
-        [[(DMTextFieldCell*)[self.tableView cellForRowAtIndexPath:self.indexPathOfNewRow] textField] becomeFirstResponder];
+        id cell = [self.tableView cellForRowAtIndexPath:self.indexPathOfNewRow];
+        [[cell textField] becomeFirstResponder];
         self.indexPathOfNewRow = nil;
     }
 }
