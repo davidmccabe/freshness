@@ -51,6 +51,15 @@
 
 # pragma mark ACTIONS
 
+- (IBAction)donePressed:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    for (NSString *phrase in self.phrases) {
+        [DMFood enterFoodWithName:phrase];
+    }
+    [[NSManagedObjectContext MR_defaultContext] save:NULL];
+}
+
 - (IBAction)addPressed:(id)sender {
     NSUInteger row = [self.phrases count];
     [self.phrases addObject:@""];
@@ -80,16 +89,6 @@
         self.indexPathOfNewRow = nil;
     }
 }
-
-- (IBAction)donePressed:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    for (NSString *phrase in self.phrases) {
-        [DMFood enterFoodWithName:phrase];
-    }
-    [[NSManagedObjectContext MR_defaultContext] save:NULL];
-}
-
 
 # pragma mark ROW-MERGING GESTURE
 
