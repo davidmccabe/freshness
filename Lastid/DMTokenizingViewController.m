@@ -112,10 +112,6 @@
     return self.phrases.count;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -186,7 +182,8 @@
     } completion:^(BOOL finished){}];
 }
 
-- (void)updateRowTags {
+- (void)updateRowTags
+{
     NSArray *visibleCells = [self.tableView visibleCells];  
     for (DMTextFieldCell *cell in visibleCells) {
         cell.textField.tag = [[self.tableView indexPathForCell:cell] row];
