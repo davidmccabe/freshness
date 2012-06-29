@@ -7,11 +7,13 @@
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
+@property (strong, nonatomic) UITextField *textFieldBeingEdited;
 @end
 
 @implementation DMTokenizingViewController
 
 @synthesize phrases;
+@synthesize textFieldBeingEdited;
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
@@ -29,6 +31,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setToolbarHidden:NO animated:NO];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -37,6 +42,9 @@
     // We can't do this in viewWillDisappear without getting an ugly animation.
     UINavigationController *theNavigationController = (UINavigationController *)UIApplication.sharedApplication.keyWindow.rootViewController;
     [theNavigationController setToolbarHidden:YES animated:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 # pragma mark ACTIONS
@@ -137,9 +145,48 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.textFieldBeingEdited = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.textFieldBeingEdited = nil;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {    
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)keyboardDidShow:(NSNotification*)aNotification
+{
+    CGRect keyboardFrame = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    
+    CGFloat insetHeight = keyboardFrame.size.height - self.navigationController.navigationBar.frame.size.height;
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, insetHeight, 0);
+    
+    [UIView animateWithDuration:5.0 delay:0 options:0 animations:^{
+        self.tableView.contentInset = insets;
+        self.tableView.scrollIndicatorInsets = insets;
+    } completion:^(BOOL finished){}];
+    
+    if (self.textFieldBeingEdited) {
+        NSIndexPath *theIndexPath = [NSIndexPath indexPathForRow:self.textFieldBeingEdited.tag inSection:0];
+        [self.tableView scrollToRowAtIndexPath:theIndexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification*)aNotification
+{
+    double duration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    
+    [UIView animateWithDuration:duration delay:0.0 options:curve animations:^{
+        self.tableView.contentInset = UIEdgeInsetsZero;
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsZero;
+    } completion:^(BOOL finished){}];
 }
 
 - (void)updateRowTags {
