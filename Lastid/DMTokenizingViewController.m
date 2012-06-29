@@ -8,12 +8,14 @@
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
 @property (strong, nonatomic) UITextField *textFieldBeingEdited;
+@property (copy, nonatomic) NSIndexPath *indexPathOfNewRow;
 @end
 
 @implementation DMTokenizingViewController
 
 @synthesize phrases;
 @synthesize textFieldBeingEdited;
+@synthesize indexPathOfNewRow;
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
@@ -55,7 +57,28 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [[(DMTextFieldCell*)[self.tableView cellForRowAtIndexPath:indexPath] textField] becomeFirstResponder];
+    
+    // If the table is small enough to fit on screen, the newly-created row will
+    // already have a visible cell now, so it should become the first responder immediately.
+    // However, if we need to scroll to reveal the new row, the cell for that row will not exist
+    // until the row has become visible, so we must wait before we send it becomeFirstResponder.
+    DMTextFieldCell *newCell = (DMTextFieldCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    if (newCell) {
+        [[newCell textField] becomeFirstResponder];
+    }
+    else {
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        self.indexPathOfNewRow = indexPath; // Dealt with in scrollViewDidEndScrollingAnimation:.
+    }
+}
+
+// See note at addPressed:.
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    if (self.indexPathOfNewRow) {
+        [[(DMTextFieldCell*)[self.tableView cellForRowAtIndexPath:self.indexPathOfNewRow] textField] becomeFirstResponder];
+        self.indexPathOfNewRow = nil;
+    }
 }
 
 - (IBAction)donePressed:(id)sender {
