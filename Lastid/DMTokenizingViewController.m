@@ -145,6 +145,11 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     self.textFieldBeingEdited = textField;
@@ -153,11 +158,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.textFieldBeingEdited = nil;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {    
-    [textField resignFirstResponder];
-    return YES;
 }
 
 - (void)keyboardWillShow:(NSNotification*)aNotification
