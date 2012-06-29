@@ -40,9 +40,10 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    // Hide the toolbar.
     // self.navigationController has already been set to nil here.
     // We can't do this in viewWillDisappear without getting an ugly animation.
-    UINavigationController *theNavigationController = (UINavigationController *)UIApplication.sharedApplication.keyWindow.rootViewController;
+    id theNavigationController = UIApplication.sharedApplication.keyWindow.rootViewController;
     [theNavigationController setToolbarHidden:YES animated:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
