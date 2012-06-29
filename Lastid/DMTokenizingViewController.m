@@ -61,10 +61,9 @@
 }
 
 - (IBAction)addPressed:(id)sender {
-    NSUInteger row = [self.phrases count];
     [self.phrases addObject:@""];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.phrases count] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // If the table is small enough to fit on screen, the newly-created row will
