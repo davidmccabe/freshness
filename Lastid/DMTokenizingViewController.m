@@ -24,7 +24,8 @@
 
 - (void)viewDidLoad
 {
-    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoinGesture:)];
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]
+        initWithTarget:self action:@selector(joinPhrasesGestureWasRecognized:)];
     recognizer.minimumPressDuration = 0.1;
     recognizer.numberOfTouchesRequired = 2;
     [self.tableView addGestureRecognizer:recognizer];
@@ -93,7 +94,7 @@
 
 # pragma mark ROW-MERGING GESTURE
 
-- (void)handleJoinGesture:(UIGestureRecognizer *)recognizer
+- (void)joinPhrasesGestureWasRecognized:(UIGestureRecognizer *)recognizer
 {
     if (recognizer.state != UIGestureRecognizerStateEnded) return;
     if (recognizer.numberOfTouches != 2) return;
