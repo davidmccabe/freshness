@@ -8,12 +8,6 @@
 @implementation DMDictationViewController
 @synthesize entryView;
 
-- (void)viewDidUnload
-{
-    [self setEntryView:nil];
-    [super viewDidUnload];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     self.entryView.layer.borderWidth = 1.0;
