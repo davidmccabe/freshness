@@ -70,7 +70,7 @@
     // already have a visible cell now, so it should become the first responder immediately.
     // However, if we need to scroll to reveal the new row, the cell for that row will not exist
     // until the row has become visible, so we must wait before we send it becomeFirstResponder.
-    DMTextFieldCell *newCell = (DMTextFieldCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    id newCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (newCell) {
         [[newCell textField] becomeFirstResponder];
     }
