@@ -32,7 +32,7 @@
 {
     [self.navigationController setToolbarHidden:NO animated:NO];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
@@ -160,17 +160,14 @@
     return YES;
 }
 
-- (void)keyboardDidShow:(NSNotification*)aNotification
+- (void)keyboardWillShow:(NSNotification*)aNotification
 {
-    CGRect keyboardFrame = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    
+    CGRect keyboardFrame = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];    
     CGFloat insetHeight = keyboardFrame.size.height - self.navigationController.navigationBar.frame.size.height;
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, insetHeight, 0);
-    
-    [UIView animateWithDuration:5.0 delay:0 options:0 animations:^{
-        self.tableView.contentInset = insets;
-        self.tableView.scrollIndicatorInsets = insets;
-    } completion:^(BOOL finished){}];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, insetHeight, 0);    
+
+    self.tableView.contentInset = insets;
+    self.tableView.scrollIndicatorInsets = insets;
     
     if (self.textFieldBeingEdited) {
         NSIndexPath *theIndexPath = [NSIndexPath indexPathForRow:self.textFieldBeingEdited.tag inSection:0];
