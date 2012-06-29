@@ -7,7 +7,7 @@
 
 @interface DMTokenizingViewController ()
 @property (strong, nonatomic) NSMutableArray *phrases;
-@property (strong, nonatomic) UITextField *textFieldBeingEdited;
+@property (weak, nonatomic) UITextField *textFieldBeingEdited;
 @property (copy, nonatomic) NSIndexPath *indexPathOfNewRow;
 @end
 
