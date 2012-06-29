@@ -56,7 +56,6 @@
 	}
 	[result addObject:phrase];
     [result mapUsingSelector:@selector(phraseString)];
-    [result rejectUsingSelector:@selector(isOnlyDelimiters)];
 	return result;
 }
 
