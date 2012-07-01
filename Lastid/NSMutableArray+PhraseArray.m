@@ -51,7 +51,7 @@
 		if ([DMFood foodExistsWhoseNameBeginsWith:[attemptedNextPhrase phraseString]]) {
             phrase = attemptedNextPhrase;
 		} else {
-            if(phrase.count) [result addObject:phrase];
+            if(phrase.count > 0) [result addObject:phrase];
 			phrase = [NSMutableArray arrayWithObject:word];
         }
 	}
