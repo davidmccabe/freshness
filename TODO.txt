@@ -1,1 +1,0 @@
-Deletion in search mode is broken.

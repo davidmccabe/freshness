@@ -140,14 +140,14 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController*)controller
 {
-    [self.tableView beginUpdates];
+    [[self activeTableView] beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController*)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath*)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath*)newIndexPath
 {
     if (type == NSFetchedResultsChangeDelete)
     {
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[self activeTableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -155,13 +155,23 @@
 {    
     if (type == NSFetchedResultsChangeDelete)
     {
-        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+        [[self activeTableView] deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController*)controller
 {
-    [self.tableView endUpdates];
+    [[self activeTableView] endUpdates];
+}
+
+- (UITableView *)activeTableView
+{
+    if( self.searchDisplayController.isActive ) {
+        return self.searchDisplayController.searchResultsTableView;
+    }
+    else {
+        return self.tableView;
+    }
 }
 
 @end
