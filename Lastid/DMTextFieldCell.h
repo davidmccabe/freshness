@@ -3,5 +3,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DMTextFieldCell : UITableViewCell
-@property (nonatomic, retain) IBOutlet UITextField* textField;
+@property (weak, nonatomic) IBOutlet UITextField* textField;
 @end
