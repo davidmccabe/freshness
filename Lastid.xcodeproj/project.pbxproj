@@ -39,6 +39,7 @@
 		6361DA131536273900309770 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA121536273900309770 /* NSString+Utilities.m */; };
 		6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */; };
 		6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMTextFieldCell.m */; };
+		63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,8 @@
 		6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+Delimeters.m"; sourceTree = "<group>"; };
 		6361DA171537C46800309770 /* DMTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTextFieldCell.h; sourceTree = "<group>"; };
 		6361DA181537C46800309770 /* DMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTextFieldCell.m; sourceTree = "<group>"; };
+		63D25DE515A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+InPlaceArrayOperations.h"; sourceTree = "<group>"; };
+		63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+InPlaceArrayOperations.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
+				63D25DE515A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.h */,
+				63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */,
 				6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */,
 				6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */,
 				6361DA111536273900309770 /* NSString+Utilities.h */,
@@ -331,6 +336,7 @@
 				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
 				6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */,
 				6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */,
+				63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
