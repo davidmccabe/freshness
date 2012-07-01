@@ -119,7 +119,7 @@
     self.frc = [[NSFetchedResultsController alloc]
                     initWithFetchRequest:fetchRequest
                     managedObjectContext:[NSManagedObjectContext MR_defaultContext]
-                    sectionNameKeyPath:isSortedByName ? @"name.firstInitialString" : nil
+                    sectionNameKeyPath:isSortedByName ? @"name.stringWithFirstCharacter" : nil
                     cacheName:nil];
     self.frc.delegate = self;
     

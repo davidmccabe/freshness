@@ -6,5 +6,5 @@
 - (NSArray *)componentsSeparatedByDelimiters;
 - (NSString *)stringByTrimmingDelimiters;
 - (BOOL)isOnlyDelimiters;
-- (NSString *)firstInitialString;
+- (NSString *)stringWithFirstCharacter;
 @end
