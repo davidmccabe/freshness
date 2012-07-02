@@ -21,21 +21,40 @@
     return self;
 }
 
-/*
- Attempts to clean up the given string as much as possible
- and returns an array of capitalized words or phrases, where the phrases
- are formed from consecutive words from the input that are thought to
- represent a single item.
-*/
-+ (DMFoodList *)foodListFromString:(NSString *)string
+- (void)addFoodsFromString:(NSString *)string
 {
-    DMFoodList *list = [[DMFoodList alloc] init];
-    list.foodNames = [[string componentsSeparatedByDelimiters] mutableCopy];
-    [list.foodNames mapUsingSelector:@selector(stringByTrimmingDelimiters)];
-    [list.foodNames mapUsingSelector:@selector(capitalizedString)];
-    [list.foodNames rejectUsingSelector:@selector(isOnlyDelimiters)];
-    list.foodNames = [list nameArrayByJoiningExistingNames];
-    return list;
+    NSMutableArray *names = [[string componentsSeparatedByDelimiters] mutableCopy];
+    [names mapUsingSelector:@selector(stringByTrimmingDelimiters)];
+    [names mapUsingSelector:@selector(capitalizedString)];
+    [names rejectUsingSelector:@selector(isOnlyDelimiters)];
+    names = [self nameArrayByJoiningExistingNamesInArray:names];
+    [self.foodNames addObjectsFromArray:names];
+}
+
+/*
+ Joins adjacent words if the resulting phrase already exists in the database.
+ E.g., if the database contains the phrases "Green Beans" and "Fresh Sheep Milk",
+ then this maps
+ ["Green", "Beans", "Juice", "Fresh", "Sheep", "Milk"]
+ to
+ ["Green Beans", "Juice", "Fresh Sheep Milk"].
+*/
+- (NSMutableArray *)nameArrayByJoiningExistingNamesInArray:(NSArray *)names
+{
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:[names count]];
+    
+    NSString *phrase = @"";
+	for(NSString *word in names) {
+        NSString *attemptedNextPhrase = [phrase stringByAppendingFormat:@" %@", word];
+		if ([DMFood foodExistsWhoseNameBeginsWith:attemptedNextPhrase]) {
+            phrase = attemptedNextPhrase;
+		} else {
+            if(phrase.length > 0) [result addObject:phrase];
+			phrase = word;
+        }
+	}
+	[result addObject:phrase];
+	return result;
 }
 
 - (void)commit
@@ -54,34 +73,6 @@
     [self.foodNames replaceObjectAtIndex:firstIndex withObject:newPhrase];
     [self.foodNames removeObjectAtIndex:secondIndex];
 }
-
-/*
- Joins adjacent words if the resulting phrase already exists in the database.
- E.g., if the database contains the phrases "Green Beans" and "Fresh Sheep Milk",
- then this maps
- ["Green", "Beans", "Juice", "Fresh", "Sheep", "Milk"]
- to
- ["Green Beans", "Juice", "Fresh Sheep Milk"].
-*/
-
-- (NSMutableArray *)nameArrayByJoiningExistingNames
-{
-	NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self count]];
-    
-    NSString *phrase = @"";
-	for(NSString *word in self) {
-        NSString *attemptedNextPhrase = [phrase stringByAppendingFormat:@" %@", word];
-		if ([DMFood foodExistsWhoseNameBeginsWith:attemptedNextPhrase]) {
-            phrase = attemptedNextPhrase;
-		} else {
-            if(phrase.length > 0) [result addObject:phrase];
-			phrase = word;
-        }
-	}
-	[result addObject:phrase];
-	return result;
-}
-
 
 #pragma mark ARRAY EMULATION
 

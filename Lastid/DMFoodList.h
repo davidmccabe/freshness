@@ -4,16 +4,15 @@
 
 @interface DMFoodList : NSObject <NSFastEnumeration>
 
-+ (DMFoodList *)foodListFromString:(NSString *)string;
-
+- (void)addFoodsFromString:(NSString *)string;
 - (void)commit;
+
+- (void)mergeNameAtIndex:(NSUInteger)firstIndex withNameAtIndex:(NSUInteger)secondIndex;
 
 - (NSUInteger)count;
 - (id)objectAtIndex:(NSUInteger)index;
 - (void)addObject:(id)object;
 - (void)removeObjectAtIndex:(NSUInteger)index;
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)newObject;
-
-- (void)mergeNameAtIndex:(NSUInteger)firstIndex withNameAtIndex:(NSUInteger)secondIndex;
 
 @end

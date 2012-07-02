@@ -19,7 +19,8 @@
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
-    self.foodNames = [DMFoodList foodListFromString:theString];
+    self.foodNames = [[DMFoodList alloc] init];
+    [self.foodNames addFoodsFromString:theString];
 }
 
 - (void)viewDidLoad
