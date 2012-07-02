@@ -1,25 +1,25 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
 #import "DMTokenizingViewController.h"
-#import "NSMutableArray+PhraseArray.h"
 #import "DMTextFieldCell.h"
 #import "DMFood.h"
+#import "DMFoodList.h"
 
 @interface DMTokenizingViewController ()
-@property (strong, nonatomic) NSMutableArray *phrases;
+@property (strong, nonatomic) DMFoodList *foodNames;
 @property (weak, nonatomic) UITextField *textFieldBeingEdited;
 @property (copy, nonatomic) NSIndexPath *indexPathOfNewRow;
 @end
 
 @implementation DMTokenizingViewController
 
-@synthesize phrases;
+@synthesize foodNames;
 @synthesize textFieldBeingEdited;
 @synthesize indexPathOfNewRow;
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
-    self.phrases = [NSMutableArray phraseArrayFromString:theString];
+    self.foodNames = [DMFoodList foodListFromString:theString];
 }
 
 - (void)viewDidLoad
@@ -56,16 +56,14 @@
 - (IBAction)donePressed:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
     
-    for (NSString *phrase in self.phrases) {
-        [DMFood enterFoodWithName:phrase];
-    }
+    [self.foodNames commit];
     [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
 - (IBAction)addPressed:(id)sender {
-    [self.phrases addObject:@""];
+    [self.foodNames addObject:@""];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.phrases count] - 1 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.foodNames count] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // If the table is small enough to fit on screen, the newly-created row will
@@ -92,6 +90,7 @@
     }
 }
 
+
 # pragma mark ROW-MERGING GESTURE
 
 - (void)joinPhrasesGestureWasRecognized:(UIGestureRecognizer *)recognizer
@@ -113,7 +112,7 @@
 
 - (void)mergeFirstRowNumber:(NSUInteger)row1 withSecondRowNumber:(NSUInteger)row2
 {    
-    [self.phrases mergePhraseAtIndex:row1 withPhraseAtIndex:row2];
+    [self.foodNames mergeNameAtIndex:row1 withNameAtIndex:row2];
     
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
@@ -133,13 +132,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.phrases.count;
+    return self.foodNames.count;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.phrases removeObjectAtIndex:indexPath.row];
+        [self.foodNames removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self performSelector:@selector(updateRowTags) withObject:nil afterDelay:0.0];
     }   
@@ -152,7 +151,7 @@
 {
 	DMTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
 	
-	cell.textField.text = [self.phrases objectAtIndex:indexPath.row];
+	cell.textField.text = [self.foodNames objectAtIndex:indexPath.row];
     cell.textField.tag = indexPath.row;
     
     return cell;
@@ -161,7 +160,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    [self.phrases replaceObjectAtIndex:textField.tag withObject:newString];
+    [self.foodNames replaceObjectAtIndex:textField.tag withObject:newString];
     return YES;
 }
 

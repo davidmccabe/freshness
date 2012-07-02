@@ -35,11 +35,11 @@
 		6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EF153126F500309770 /* MRCoreDataAction.m */; };
 		6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9FF1535006E00309770 /* DMTokenizingViewController.m */; };
 		6361DA061535226B00309770 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6361DA051535226B00309770 /* TODO.txt */; };
-		6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */; };
 		6361DA131536273900309770 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA121536273900309770 /* NSString+Utilities.m */; };
 		6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */; };
 		6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMTextFieldCell.m */; };
 		63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */; };
+		63D25DF115A143EA001C214E /* DMFoodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF015A143EA001C214E /* DMFoodList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,8 +95,6 @@
 		6361D9FE1535006E00309770 /* DMTokenizingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTokenizingViewController.h; sourceTree = "<group>"; };
 		6361D9FF1535006E00309770 /* DMTokenizingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTokenizingViewController.m; sourceTree = "<group>"; };
 		6361DA051535226B00309770 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
-		6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PhraseArray.h"; sourceTree = "<group>"; };
-		6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PhraseArray.m"; sourceTree = "<group>"; };
 		6361DA111536273900309770 /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
 		6361DA121536273900309770 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
 		6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+Delimeters.h"; sourceTree = "<group>"; };
@@ -105,6 +103,8 @@
 		6361DA181537C46800309770 /* DMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTextFieldCell.m; sourceTree = "<group>"; };
 		63D25DE515A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+InPlaceArrayOperations.h"; sourceTree = "<group>"; };
 		63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+InPlaceArrayOperations.m"; sourceTree = "<group>"; };
+		63D25DEF15A143EA001C214E /* DMFoodList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFoodList.h; sourceTree = "<group>"; };
+		63D25DF015A143EA001C214E /* DMFoodList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFoodList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +158,6 @@
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
 				63D25DE515A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.h */,
 				63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */,
-				6361DA0B1535292000309770 /* NSMutableArray+PhraseArray.h */,
-				6361DA0C1535292000309770 /* NSMutableArray+PhraseArray.m */,
 				6361DA111536273900309770 /* NSString+Utilities.h */,
 				6361DA121536273900309770 /* NSString+Utilities.m */,
 				6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */,
@@ -174,6 +172,8 @@
 				6361D9B51530EA4900309770 /* DMDictationViewController.m */,
 				6361D9FE1535006E00309770 /* DMTokenizingViewController.h */,
 				6361D9FF1535006E00309770 /* DMTokenizingViewController.m */,
+				63D25DEF15A143EA001C214E /* DMFoodList.h */,
+				63D25DF015A143EA001C214E /* DMFoodList.m */,
 				6361DA171537C46800309770 /* DMTextFieldCell.h */,
 				6361DA181537C46800309770 /* DMTextFieldCell.m */,
 				6361D9A61530EA4900309770 /* Supporting Files */,
@@ -332,11 +332,11 @@
 				6361D9FC153126F600309770 /* MagicalRecordHelpers.m in Sources */,
 				6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */,
 				6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */,
-				6361DA0D1535292000309770 /* NSMutableArray+PhraseArray.m in Sources */,
 				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
 				6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */,
 				6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */,
 				63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */,
+				63D25DF115A143EA001C214E /* DMFoodList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
