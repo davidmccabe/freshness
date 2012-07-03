@@ -5,35 +5,33 @@
 @implementation NSArray (ReducingToGroups)
 
 /*
-    Groups together consecutive items as long as the resulting groups satisfy the predicate.
-    E.g.:
-    
-     id array = [NSArray arrayWithObjects:@"a", @"b", @"c", @"d", @"e", nil];
-     
-     id res = [array arrayByReducingToGroupsByInitial:@""
-                     combiner:^(id a, id b)    { return [a stringByAppendingString:b];}
-                    predicate:^BOOL(id string) { return [string length] < 4; }];
-     
-     [res description] => ("abc", "de")
+ Groups together consecutive items as long as the resulting groups satisfy the predicate.
+ E.g.:
  
-    Will not include 'initial' at the beginning of the resulting array
-    even if the predicate fails for the first item alone.
-*/
-- (NSArray *)arrayByReducingToGroupsByInitial:(id)initial combiner:(id(^)(id,id))combiner predicate:(BOOL(^)(id))predicate
+ id array = [NSArray arrayWithObjects:@"a", @"b", @"c", @"d", @"e", nil];
+ 
+ id res = [array arrayByReducingToGroupsWithFold:^(id a, id b)    { return [a stringByAppendingString:b];}
+                                       predicate:^BOOL(id string) { return [string length] < 4; }];
+ 
+ [res description] => ("abc", "de")
+
+ */
+- (NSArray *)arrayByReducingToGroupsWithFold:(id(^)(id,id))fold predicate:(BOOL(^)(id))predicate
 {
-	NSMutableArray *result = [NSMutableArray array];
+    if (self.count == 0) return [NSArray array];
     
-    id group = initial;
-    BOOL firstTime = YES;
-    for(id item in self) {
-        id nextAttemptedGroup = combiner(group, item);
+	NSMutableArray *result = [NSMutableArray array];
+
+    id group = [self objectAtIndex:0];
+    for (int i = 1; i < self.count; i++) {
+        id item = [self objectAtIndex:i];
+        id nextAttemptedGroup = fold(group,item);
         if (predicate(nextAttemptedGroup)) {
             group = nextAttemptedGroup;
         } else {
-            if (!firstTime) [result addObject:group];
+            [result addObject:group];
             group = item;
         }
-        firstTime = NO;
     }
     [result addObject:group];
     
@@ -43,6 +41,7 @@
 - (void)cheapAssUnitTest
 {
     id abcde = [NSArray arrayWithObjects:@"a", @"b", @"c", @"d", @"e", nil];
+    id oneElement = [NSArray arrayWithObject:@"foo"];
     id res;
     BOOL valid;
 
@@ -51,16 +50,24 @@
     BOOL (^alwaysFalse)(id) = ^(id string) { return NO; };
     
     // Basic case.
-    res = [abcde arrayByReducingToGroupsByInitial:@"" combiner:appender predicate:shorterThanFour];
+    res = [abcde arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
     valid = [res isEqualToArray:[NSArray arrayWithObjects:@"abc",@"de",nil]];
     assert(valid);
     
     // Grouping an empty array should yield an empty array.
-    res = [[NSArray array] arrayByReducingToGroupsByInitial:@"" combiner:appender predicate:shorterThanFour];
+    res = [[NSArray array] arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
     assert([res count] == 0);
     
-    // Predicate never true should yield a copy of the receiver.
-    res = [abcde arrayByReducingToGroupsByInitial:@"" combiner:appender predicate:alwaysFalse];
+    // Grouping an array with one object should yield a copy of the receiver with a true predicate.
+    res = [oneElement arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
+    valid = [res isEqualToArray:oneElement];
+    
+    // Grouping an array with one object should yield a copy of the receiver with a false predicate.
+    res = [oneElement arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
+    valid = [res isEqualToArray:oneElement];
+    
+    // An always-false predicate should yield a copy of the receiver.
+    res = [abcde arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
     valid = [res isEqualToArray:abcde];
     assert(valid);
 }

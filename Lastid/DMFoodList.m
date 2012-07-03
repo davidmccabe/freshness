@@ -42,9 +42,8 @@
 */
 - (NSArray *)nameArrayByJoiningExistingNamesInArray:(NSArray *)names
 {
-    return [names arrayByReducingToGroupsByInitial:@""
-                  combiner:^(id name, id word) { return [name stringByAppendingFormat:@" %@", word]; }
-                 predicate:^(id name)          { return [DMFood foodExistsWhoseNameBeginsWith:name]; }];
+    return [names arrayByReducingToGroupsWithFold:^(id name, id word) { return [name stringByAppendingFormat:@" %@", word]; }
+                                        predicate:^(id name)          { return [DMFood foodExistsWhoseNameBeginsWith:name]; }];
 }
 
 - (void)commit
