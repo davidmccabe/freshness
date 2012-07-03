@@ -6,21 +6,21 @@
 #import "DMFoodList.h"
 
 @interface DMTokenizingViewController ()
-@property (strong, nonatomic) DMFoodList *foodNames;
+@property (strong, nonatomic) DMFoodList *entries;
 @property (weak, nonatomic) UITextField *textFieldBeingEdited;
 @property (copy, nonatomic) NSIndexPath *indexPathOfNewRow;
 @end
 
 @implementation DMTokenizingViewController
 
-@synthesize foodNames;
+@synthesize entries;
 @synthesize textFieldBeingEdited;
 @synthesize indexPathOfNewRow;
 
 - (void)setStringToBeTokenized:(NSString *)theString
 {
-    self.foodNames = [[DMFoodList alloc] init];
-    [self.foodNames addFoodsFromString:theString];
+    self.entries = [[DMFoodList alloc] init];
+    [self.entries addFoodsFromString:theString];
 }
 
 - (void)viewDidLoad
@@ -57,14 +57,14 @@
 - (IBAction)donePressed:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
     
-    [self.foodNames commit];
+    [self.entries commit];
     [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
 - (IBAction)addPressed:(id)sender {
-    [self.foodNames addObject:@""];
+    [self.entries addObject:@""];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.foodNames count] - 1 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.entries count] - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // If the table is small enough to fit on screen, the newly-created row will
@@ -113,7 +113,7 @@
 
 - (void)mergeFirstRowNumber:(NSUInteger)row1 withSecondRowNumber:(NSUInteger)row2
 {    
-    [self.foodNames mergeNameAtIndex:row1 withNameAtIndex:row2];
+    [self.entries mergeNameAtIndex:row1 withNameAtIndex:row2];
     
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
@@ -133,13 +133,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.foodNames.count;
+    return self.entries.count;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.foodNames removeObjectAtIndex:indexPath.row];
+        [self.entries removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self performSelector:@selector(updateRowTags) withObject:nil afterDelay:0.0];
     }   
@@ -152,7 +152,7 @@
 {
 	DMTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
 	
-	cell.textField.text = [self.foodNames objectAtIndex:indexPath.row];
+	cell.textField.text = [self.entries objectAtIndex:indexPath.row];
     cell.textField.tag = indexPath.row;
     
     return cell;
@@ -161,7 +161,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    [self.foodNames replaceObjectAtIndex:textField.tag withObject:newString];
+    [self.entries replaceObjectAtIndex:textField.tag withObject:newString];
     return YES;
 }
 
