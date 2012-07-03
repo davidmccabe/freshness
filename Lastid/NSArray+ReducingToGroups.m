@@ -40,5 +40,30 @@
     return result;
 }
 
+- (void)cheapAssUnitTest
+{
+    id abcde = [NSArray arrayWithObjects:@"a", @"b", @"c", @"d", @"e", nil];
+    id res;
+    BOOL valid;
+
+    id (^appender)(id,id) = ^(id a, id b){ return [a stringByAppendingString:b];};
+    BOOL (^shorterThanFour)(id) = ^BOOL(id string){ return [string length] < 4; };
+    BOOL (^alwaysFalse)(id) = ^(id string) { return NO; };
+    
+    // Basic case.
+    res = [abcde arrayByReducingToGroupsByInitial:@"" combiner:appender predicate:shorterThanFour];
+    valid = [res isEqualToArray:[NSArray arrayWithObjects:@"abc",@"de",nil]];
+    assert(valid);
+    
+    // Grouping an empty array should yield an empty array.
+    res = [[NSArray array] arrayByReducingToGroupsByInitial:@"" combiner:appender predicate:shorterThanFour];
+    assert([res count] == 0);
+    
+    // Predicate never true should yield a copy of the receiver.
+    res = [abcde arrayByReducingToGroupsByInitial:@"" combiner:appender predicate:alwaysFalse];
+    valid = [res isEqualToArray:abcde];
+    assert(valid);
+}
+
 
 @end

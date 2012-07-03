@@ -4,4 +4,5 @@
 
 @interface NSArray (ReducingToGroups)
 - (NSArray *)arrayByReducingToGroupsByInitial:(id)initial combiner:(id(^)(id,id))combiner predicate:(BOOL(^)(id))predicate;
+- (void)cheapAssUnitTest;
 @end
