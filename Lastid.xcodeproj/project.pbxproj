@@ -40,6 +40,7 @@
 		6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMTextFieldCell.m */; };
 		63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */; };
 		63D25DF115A143EA001C214E /* DMFoodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF015A143EA001C214E /* DMFoodList.m */; };
+		63D25DF715A23542001C214E /* NSArray+ReducingToGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF615A23541001C214E /* NSArray+ReducingToGroups.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,8 @@
 		63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+InPlaceArrayOperations.m"; sourceTree = "<group>"; };
 		63D25DEF15A143EA001C214E /* DMFoodList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFoodList.h; sourceTree = "<group>"; };
 		63D25DF015A143EA001C214E /* DMFoodList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFoodList.m; sourceTree = "<group>"; };
+		63D25DF515A23541001C214E /* NSArray+ReducingToGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ReducingToGroups.h"; sourceTree = "<group>"; };
+		63D25DF615A23541001C214E /* NSArray+ReducingToGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ReducingToGroups.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				6361D9B11530EA4900309770 /* MainStoryboard.storyboard */,
 				63D25DE515A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.h */,
 				63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */,
+				63D25DF515A23541001C214E /* NSArray+ReducingToGroups.h */,
+				63D25DF615A23541001C214E /* NSArray+ReducingToGroups.m */,
 				6361DA111536273900309770 /* NSString+Utilities.h */,
 				6361DA121536273900309770 /* NSString+Utilities.m */,
 				6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */,
@@ -337,6 +342,7 @@
 				6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */,
 				63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */,
 				63D25DF115A143EA001C214E /* DMFoodList.m in Sources */,
+				63D25DF715A23542001C214E /* NSArray+ReducingToGroups.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

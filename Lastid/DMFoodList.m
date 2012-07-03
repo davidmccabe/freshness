@@ -4,6 +4,7 @@
 #import "NSString+Utilities.h"
 #import "DMFood.h"
 #import "NSMutableArray+InPlaceArrayOperations.h"
+#import "NSArray+ReducingToGroups.h"
 
 @interface DMFoodList ()
 @property (strong, nonatomic) NSMutableArray *foodNames;
@@ -27,7 +28,7 @@
     [names mapUsingSelector:@selector(stringByTrimmingDelimiters)];
     [names mapUsingSelector:@selector(capitalizedString)];
     [names rejectUsingSelector:@selector(isOnlyDelimiters)];
-    names = [self nameArrayByJoiningExistingNamesInArray:names];
+    names = [[self nameArrayByJoiningExistingNamesInArray:names] mutableCopy];
     [self.foodNames addObjectsFromArray:names];
 }
 
@@ -39,22 +40,11 @@
  to
  ["Green Beans", "Juice", "Fresh Sheep Milk"].
 */
-- (NSMutableArray *)nameArrayByJoiningExistingNamesInArray:(NSArray *)names
+- (NSArray *)nameArrayByJoiningExistingNamesInArray:(NSArray *)names
 {
-	NSMutableArray *result = [NSMutableArray arrayWithCapacity:[names count]];
-    
-    NSString *phrase = @"";
-	for(NSString *word in names) {
-        NSString *attemptedNextPhrase = [phrase stringByAppendingFormat:@" %@", word];
-		if ([DMFood foodExistsWhoseNameBeginsWith:attemptedNextPhrase]) {
-            phrase = attemptedNextPhrase;
-		} else {
-            if(phrase.length > 0) [result addObject:phrase];
-			phrase = word;
-        }
-	}
-	[result addObject:phrase];
-	return result;
+    return [names arrayByReducingToGroupsByInitial:@""
+                  combiner:^(id name, id word) { return [name stringByAppendingFormat:@" %@", word]; }
+                 predicate:^(id name)          { return [DMFood foodExistsWhoseNameBeginsWith:name]; }];
 }
 
 - (void)commit
