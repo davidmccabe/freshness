@@ -41,9 +41,9 @@
 - (void)cheapAssUnitTest
 {
     id abcde = [NSArray arrayWithObjects:@"a", @"b", @"c", @"d", @"e", nil];
+    id abc_de = [NSArray arrayWithObjects:@"abc", @"de", nil];
     id oneElement = [NSArray arrayWithObject:@"foo"];
     id res;
-    BOOL valid;
 
     id (^appender)(id,id) = ^(id a, id b){ return [a stringByAppendingString:b];};
     BOOL (^shorterThanFour)(id) = ^BOOL(id string){ return [string length] < 4; };
@@ -51,8 +51,7 @@
     
     // Basic case.
     res = [abcde arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
-    valid = [res isEqualToArray:[NSArray arrayWithObjects:@"abc",@"de",nil]];
-    assert(valid);
+    assert([res isEqualToArray:abc_de);
     
     // Grouping an empty array should yield an empty array.
     res = [[NSArray array] arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
@@ -60,16 +59,15 @@
     
     // Grouping an array with one object should yield a copy of the receiver with a true predicate.
     res = [oneElement arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
-    valid = [res isEqualToArray:oneElement];
+    assert([res isEqualToArray:oneElement]);
     
     // Grouping an array with one object should yield a copy of the receiver with a false predicate.
     res = [oneElement arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
-    valid = [res isEqualToArray:oneElement];
+    assert([res isEqualToArray:oneElement]);
     
     // An always-false predicate should yield a copy of the receiver.
     res = [abcde arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
-    valid = [res isEqualToArray:abcde];
-    assert(valid);
+    assert([res isEqualToArray:abcde]);
 }
 
 
