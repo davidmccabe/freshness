@@ -116,10 +116,12 @@
         fetchRequest = [DMFood MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName withPredicate:predicate];
     }
     
+    id sectionNameKeyPath = isSortedByName ? @"name.stringWithFirstCharacter" : nil;
+    
     self.frc = [[NSFetchedResultsController alloc]
                     initWithFetchRequest:fetchRequest
                     managedObjectContext:[NSManagedObjectContext MR_defaultContext]
-                    sectionNameKeyPath:isSortedByName ? @"name.stringWithFirstCharacter" : nil
+                    sectionNameKeyPath:sectionNameKeyPath
                     cacheName:nil];
     self.frc.delegate = self;
     
