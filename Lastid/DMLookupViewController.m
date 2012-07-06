@@ -116,7 +116,7 @@
         fetchRequest = [DMFood MR_requestAllSortedBy:self.sortOrder ascending:isSortedByName withPredicate:predicate];
     }
     
-    id sectionNameKeyPath = isSortedByName ? @"name.stringWithFirstCharacter" : nil;
+    id sectionNameKeyPath = isSortedByName ? @"name.DM_stringWithFirstCharacter" : nil;
     
     self.frc = [[NSFetchedResultsController alloc]
                     initWithFetchRequest:fetchRequest

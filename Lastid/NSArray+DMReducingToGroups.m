@@ -1,8 +1,8 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
-#import "NSArray+ReducingToGroups.h"
+#import "NSArray+DMReducingToGroups.h"
 
-@implementation NSArray (ReducingToGroups)
+@implementation NSArray (DMReducingToGroups)
 
 /*
  Groups together consecutive items as long as the resulting groups satisfy the predicate.
@@ -16,7 +16,7 @@
  [res description] => ("abc", "de")
 
  */
-- (NSArray *)arrayByReducingToGroupsWithFold:(id(^)(id,id))fold predicate:(BOOL(^)(id))predicate
+- (NSArray *)DM_arrayByReducingToGroupsWithFold:(id(^)(id,id))fold predicate:(BOOL(^)(id))predicate
 {
     if (self.count == 0) return [NSArray array];
     
@@ -50,23 +50,23 @@
     BOOL (^alwaysFalse)(id) = ^(id string) { return NO; };
     
     // Basic case.
-    res = [abcde arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
+    res = [abcde DM_arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
     assert([res isEqualToArray:abc_de]);
     
     // Grouping an empty array should yield an empty array.
-    res = [[NSArray array] arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
+    res = [[NSArray array] DM_arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
     assert([res count] == 0);
     
     // Grouping an array with one object should yield a copy of the receiver with a true predicate.
-    res = [oneElement arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
+    res = [oneElement DM_arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
     assert([res isEqualToArray:oneElement]);
     
     // Grouping an array with one object should yield a copy of the receiver with a false predicate.
-    res = [oneElement arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
+    res = [oneElement DM_arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
     assert([res isEqualToArray:oneElement]);
     
     // An always-false predicate should yield a copy of the receiver.
-    res = [abcde arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
+    res = [abcde DM_arrayByReducingToGroupsWithFold:appender predicate:alwaysFalse];
     assert([res isEqualToArray:abcde]);
 }
 

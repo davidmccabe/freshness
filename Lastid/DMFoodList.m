@@ -1,10 +1,10 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
 #import "DMFoodList.h"
-#import "NSString+Utilities.h"
 #import "DMFood.h"
-#import "NSMutableArray+InPlaceArrayOperations.h"
-#import "NSArray+ReducingToGroups.h"
+#import "NSString+DMUtilities.h"
+#import "NSMutableArray+DMInPlaceArrayOperations.h"
+#import "NSArray+DMReducingToGroups.h"
 
 @interface DMFoodList ()
 @property (strong, nonatomic) NSMutableArray *foodNames;
@@ -30,9 +30,9 @@
 - (void)addFoodsFromString:(NSString *)string
 {
     NSMutableArray *names = [[string componentsSeparatedByCharactersInSet:self.delimiters] mutableCopy];
-    [names mapUsingSelector:@selector(stringByTrimmingCharactersInSet:) withObject:self.delimiters];
-    [names mapUsingSelector:@selector(capitalizedString)];
-    [names rejectUsingSelector:@selector(hasOnlyCharactersInSet:) withObject:self.delimiters];
+    [names DM_mapUsingSelector:@selector(stringByTrimmingCharactersInSet:) withObject:self.delimiters];
+    [names DM_mapUsingSelector:@selector(capitalizedString)];
+    [names DM_rejectUsingSelector:@selector(DM_hasOnlyCharactersInSet:) withObject:self.delimiters];
     names = [[self nameArrayByJoiningExistingNamesInArray:names] mutableCopy];
     [self.foodNames addObjectsFromArray:names];
 }
@@ -47,8 +47,8 @@
 */
 - (NSArray *)nameArrayByJoiningExistingNamesInArray:(NSArray *)names
 {
-    return [names arrayByReducingToGroupsWithFold:^(id name, id word) { return [name stringByAppendingFormat:@" %@", word]; }
-                                        predicate:^(id name)          { return [DMFood foodExistsWhoseNameBeginsWith:name]; }];
+    return [names DM_arrayByReducingToGroupsWithFold:^(id name, id word) { return [name stringByAppendingFormat:@" %@", word]; }
+                                           predicate:^(id name)          { return [DMFood foodExistsWhoseNameBeginsWith:name]; }];
 }
 
 - (void)commit

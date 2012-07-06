@@ -1,15 +1,15 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
-#import "NSString+Utilities.h"
+#import "NSString+DMUtilities.h"
 
-@implementation NSString (Utilities)
+@implementation NSString (DMUtilities)
 
-- (BOOL)hasOnlyCharactersInSet:(NSCharacterSet *)theSet
+- (BOOL)DM_hasOnlyCharactersInSet:(NSCharacterSet *)theSet
 {
     return [theSet isSupersetOfSet:[NSCharacterSet characterSetWithCharactersInString:self]];
 }
 
-- (NSString *)stringWithFirstCharacter
+- (NSString *)DM_stringWithFirstCharacter
 {
     return [self substringToIndex:1];
 }

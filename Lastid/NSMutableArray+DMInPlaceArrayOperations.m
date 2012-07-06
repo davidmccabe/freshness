@@ -3,30 +3,30 @@
 // An apologia:
 // Blocks are syntactically ugly, HOM would take too long to implement.
 
-#import "NSMutableArray+InPlaceArrayOperations.h"
+#import "NSMutableArray+DMInPlaceArrayOperations.h"
 
-@implementation NSMutableArray (InPlaceArrayOperations)
+@implementation NSMutableArray (DMInPlaceArrayOperations)
 
 // Clang doesn't know that we're using performSelector: with selectors that return
 // autoreleased objects, so it's worried about it causing a leak.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
-- (void)mapUsingSelector:(SEL)aSelector
+- (void)DM_mapUsingSelector:(SEL)aSelector
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector]];
     }
 }
 
-- (void)mapUsingSelector:(SEL)aSelector withObject:(id)anObject
+- (void)DM_mapUsingSelector:(SEL)aSelector withObject:(id)anObject
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector withObject:anObject]];
     }
 }
 
-- (void)rejectUsingSelector:(SEL)aSelector
+- (void)DM_rejectUsingSelector:(SEL)aSelector
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         if ([[self objectAtIndex:i] performSelector:aSelector]) {
@@ -35,7 +35,7 @@
     }
 }
 
-- (void)rejectUsingSelector:(SEL)aSelector withObject:(id)anObject
+- (void)DM_rejectUsingSelector:(SEL)aSelector withObject:(id)anObject
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         if ([[self objectAtIndex:i] performSelector:aSelector withObject:anObject]) {

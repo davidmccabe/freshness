@@ -2,7 +2,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "DMDictationViewController.h"
-#import "NSString+Utilities.h"
 #import "DMTokenizingViewController.h"
 
 @implementation DMDictationViewController
