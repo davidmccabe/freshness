@@ -51,7 +51,7 @@
     
     // Basic case.
     res = [abcde arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];
-    assert([res isEqualToArray:abc_de);
+    assert([res isEqualToArray:abc_de]);
     
     // Grouping an empty array should yield an empty array.
     res = [[NSArray array] arrayByReducingToGroupsWithFold:appender predicate:shorterThanFour];

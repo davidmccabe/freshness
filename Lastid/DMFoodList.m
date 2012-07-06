@@ -8,26 +8,31 @@
 
 @interface DMFoodList ()
 @property (strong, nonatomic) NSMutableArray *foodNames;
+@property (strong, nonatomic) NSMutableCharacterSet *delimiters;
 @end
 
 @implementation DMFoodList
 
 @synthesize foodNames;
+@synthesize delimiters;
 
 - (id)init
 {
     if (self = [super init]) {
         self.foodNames = [NSMutableArray array];
+        
+        self.delimiters = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+        [self.delimiters formUnionWithCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
     }
     return self;
 }
 
 - (void)addFoodsFromString:(NSString *)string
 {
-    NSMutableArray *names = [[string componentsSeparatedByDelimiters] mutableCopy];
-    [names mapUsingSelector:@selector(stringByTrimmingDelimiters)];
+    NSMutableArray *names = [[string componentsSeparatedByCharactersInSet:self.delimiters] mutableCopy];
+    [names mapUsingSelector:@selector(stringByTrimmingCharactersInSet:) withObject:self.delimiters];
     [names mapUsingSelector:@selector(capitalizedString)];
-    [names rejectUsingSelector:@selector(isOnlyDelimiters)];
+    [names rejectUsingSelector:@selector(hasOnlyCharactersInSet:) withObject:self.delimiters];
     names = [[self nameArrayByJoiningExistingNamesInArray:names] mutableCopy];
     [self.foodNames addObjectsFromArray:names];
 }

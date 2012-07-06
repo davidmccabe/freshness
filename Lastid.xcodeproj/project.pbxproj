@@ -36,7 +36,6 @@
 		6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9FF1535006E00309770 /* DMTokenizingViewController.m */; };
 		6361DA061535226B00309770 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6361DA051535226B00309770 /* TODO.txt */; };
 		6361DA131536273900309770 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA121536273900309770 /* NSString+Utilities.m */; };
-		6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */; };
 		6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361DA181537C46800309770 /* DMTextFieldCell.m */; };
 		63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DE615A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m */; };
 		63D25DF115A143EA001C214E /* DMFoodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF015A143EA001C214E /* DMFoodList.m */; };
@@ -98,8 +97,6 @@
 		6361DA051535226B00309770 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		6361DA111536273900309770 /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
 		6361DA121536273900309770 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
-		6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+Delimeters.h"; sourceTree = "<group>"; };
-		6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+Delimeters.m"; sourceTree = "<group>"; };
 		6361DA171537C46800309770 /* DMTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTextFieldCell.h; sourceTree = "<group>"; };
 		6361DA181537C46800309770 /* DMTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTextFieldCell.m; sourceTree = "<group>"; };
 		63D25DE515A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+InPlaceArrayOperations.h"; sourceTree = "<group>"; };
@@ -165,8 +162,6 @@
 				63D25DF615A23541001C214E /* NSArray+ReducingToGroups.m */,
 				6361DA111536273900309770 /* NSString+Utilities.h */,
 				6361DA121536273900309770 /* NSString+Utilities.m */,
-				6361DA1415362D4100309770 /* NSCharacterSet+Delimeters.h */,
-				6361DA1515362D4100309770 /* NSCharacterSet+Delimeters.m */,
 				6361D9CA1530FE6F00309770 /* DMFood.h */,
 				6361D9CB1530FE6F00309770 /* DMFood.m */,
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
@@ -338,7 +333,6 @@
 				6361D9FD153126F600309770 /* MRCoreDataAction.m in Sources */,
 				6361DA001535006F00309770 /* DMTokenizingViewController.m in Sources */,
 				6361DA131536273900309770 /* NSString+Utilities.m in Sources */,
-				6361DA1615362D4100309770 /* NSCharacterSet+Delimeters.m in Sources */,
 				6361DA191537C46900309770 /* DMTextFieldCell.m in Sources */,
 				63D25DE715A001ED001C214E /* NSMutableArray+InPlaceArrayOperations.m in Sources */,
 				63D25DF115A143EA001C214E /* DMFoodList.m in Sources */,

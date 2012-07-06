@@ -5,6 +5,8 @@
 @interface NSMutableArray (InPlaceArrayOperations)
 
 - (void)mapUsingSelector:(SEL)aSelector;
+- (void)mapUsingSelector:(SEL)aSelector withObject:(id)anObject;
 - (void)rejectUsingSelector:(SEL)aSelector;
+- (void)rejectUsingSelector:(SEL)aSelector withObject:(id)anObject;
 
 @end

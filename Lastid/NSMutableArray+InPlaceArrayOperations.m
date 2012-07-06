@@ -19,10 +19,26 @@
     }
 }
 
+- (void)mapUsingSelector:(SEL)aSelector withObject:(id)anObject
+{
+    for (NSUInteger i = 0; i < self.count; i++) {
+        [self replaceObjectAtIndex:i withObject:[[self objectAtIndex:i] performSelector:aSelector withObject:anObject]];
+    }
+}
+
 - (void)rejectUsingSelector:(SEL)aSelector
 {
     for (NSUInteger i = 0; i < self.count; i++) {
         if ([[self objectAtIndex:i] performSelector:aSelector]) {
+            [self removeObjectAtIndex:i--];
+        }
+    }
+}
+
+- (void)rejectUsingSelector:(SEL)aSelector withObject:(id)anObject
+{
+    for (NSUInteger i = 0; i < self.count; i++) {
+        if ([[self objectAtIndex:i] performSelector:aSelector withObject:anObject]) {
             [self removeObjectAtIndex:i--];
         }
     }

@@ -3,8 +3,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Utilities)
-- (NSArray *)componentsSeparatedByDelimiters;
-- (NSString *)stringByTrimmingDelimiters;
-- (BOOL)isOnlyDelimiters;
+- (BOOL)hasOnlyCharactersInSet:(NSCharacterSet *)theSet;
 - (NSString *)stringWithFirstCharacter;
 @end

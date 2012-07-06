@@ -1,23 +1,12 @@
 //  Copyright (c) 2012 David McCabe. All rights reserved.
 
 #import "NSString+Utilities.h"
-#import "NSCharacterSet+Delimeters.h"
 
 @implementation NSString (Utilities)
 
-- (NSArray *)componentsSeparatedByDelimiters
+- (BOOL)hasOnlyCharactersInSet:(NSCharacterSet *)theSet
 {
-    return [self componentsSeparatedByCharactersInSet:[NSCharacterSet delimitersCharacterSet]];
-}
-
-- (NSString *)stringByTrimmingDelimiters
-{
-    return [self stringByTrimmingCharactersInSet:[NSCharacterSet delimitersCharacterSet]];
-}
-
-- (BOOL)isOnlyDelimiters
-{
-    return [@"" isEqualToString:[self stringByTrimmingDelimiters]];
+    return [theSet isSupersetOfSet:[NSCharacterSet characterSetWithCharactersInString:self]];
 }
 
 - (NSString *)stringWithFirstCharacter
