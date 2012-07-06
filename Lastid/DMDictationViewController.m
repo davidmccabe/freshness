@@ -21,9 +21,7 @@
     if (textView != self.entryView) return YES;
 
     if ([text isEqualToString:@"\n"]) {
-        // The return key is unavoidably enabled when any text is entered, even whitespace, but we ignore whitespace.
-        if (![textView.text isOnlyDelimiters])
-            [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
+        [self performSegueWithIdentifier:@"ShowReviewSegue" sender:self];
         return NO;
     } else {
         return YES;
