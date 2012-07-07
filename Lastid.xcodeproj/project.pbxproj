@@ -48,6 +48,18 @@
 		63D25E1A15A7EA76001C214E /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D25E1915A7EA76001C214E /* GHUnitIOS.framework */; };
 		63D25E4F15A7F457001C214E /* DMReducingToGroupsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */; };
 		63D25E5115A7F488001C214E /* NSArray+DMReducingToGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF915A67BF8001C214E /* NSArray+DMReducingToGroups.m */; };
+		63D25E5415A7F705001C214E /* DMFoodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25E5315A7F705001C214E /* DMFoodTest.m */; };
+		63D25E5515A8016C001C214E /* MagicalRecordHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EC153126F500309770 /* MagicalRecordHelpers.m */; };
+		63D25E5615A80171001C214E /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9EF153126F500309770 /* MRCoreDataAction.m */; };
+		63D25E5715A80187001C214E /* NSManagedObject+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9DF153126F500309770 /* NSManagedObject+MagicalDataImport.m */; };
+		63D25E5815A80187001C214E /* NSManagedObject+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9E1153126F500309770 /* NSManagedObject+MagicalRecord.m */; };
+		63D25E5915A80187001C214E /* NSManagedObjectContext+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9E3153126F500309770 /* NSManagedObjectContext+MagicalRecord.m */; };
+		63D25E5A15A80187001C214E /* NSManagedObjectModel+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9E5153126F500309770 /* NSManagedObjectModel+MagicalRecord.m */; };
+		63D25E5B15A80187001C214E /* NSPersistentStore+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9E7153126F500309770 /* NSPersistentStore+MagicalRecord.m */; };
+		63D25E5C15A80187001C214E /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9E9153126F500309770 /* NSPersistentStoreCoordinator+MagicalRecord.m */; };
+		63D25E5D15A8018F001C214E /* DMFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9CB1530FE6F00309770 /* DMFood.m */; };
+		63D25E5E15A801C9001C214E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9CD1531017F00309770 /* CoreData.framework */; };
+		63D25E5F15A8020E001C214E /* Lastid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +132,7 @@
 		63D25E1215A7E9E7001C214E /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		63D25E1915A7EA76001C214E /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReducingToGroupsTest.m; sourceTree = "<group>"; };
+		63D25E5315A7F705001C214E /* DMFoodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFoodTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D25E5E15A801C9001C214E /* CoreData.framework in Frameworks */,
 				63D25E0715A7E9E7001C214E /* UIKit.framework in Frameworks */,
 				63D25E0815A7E9E7001C214E /* Foundation.framework in Frameworks */,
 				63D25E0915A7E9E7001C214E /* CoreGraphics.framework in Frameworks */,
@@ -280,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */,
+				63D25E5315A7F705001C214E /* DMFoodTest.m */,
 				63D25E0B15A7E9E7001C214E /* Supporting Files */,
 			);
 			path = Tests;
@@ -419,9 +434,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D25E5F15A8020E001C214E /* Lastid.xcdatamodeld in Sources */,
+				63D25E5715A80187001C214E /* NSManagedObject+MagicalDataImport.m in Sources */,
+				63D25E5815A80187001C214E /* NSManagedObject+MagicalRecord.m in Sources */,
+				63D25E5915A80187001C214E /* NSManagedObjectContext+MagicalRecord.m in Sources */,
+				63D25E5A15A80187001C214E /* NSManagedObjectModel+MagicalRecord.m in Sources */,
+				63D25E5B15A80187001C214E /* NSPersistentStore+MagicalRecord.m in Sources */,
+				63D25E5C15A80187001C214E /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
+				63D25E5615A80171001C214E /* MRCoreDataAction.m in Sources */,
+				63D25E5515A8016C001C214E /* MagicalRecordHelpers.m in Sources */,
 				63D25E1115A7E9E7001C214E /* main.m in Sources */,
 				63D25E5115A7F488001C214E /* NSArray+DMReducingToGroups.m in Sources */,
 				63D25E4F15A7F457001C214E /* DMReducingToGroupsTest.m in Sources */,
+				63D25E5D15A8018F001C214E /* DMFood.m in Sources */,
+				63D25E5415A7F705001C214E /* DMFoodTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
