@@ -33,8 +33,11 @@
 
 + (BOOL)foodExistsWhoseNameBeginsWith:(NSString *)prefix
 {
-    NSPredicate *p = [NSPredicate predicateWithFormat:@"name beginswith %@", prefix];
-    return [DMFood MR_countOfEntitiesWithPredicate:p] > 0;
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"name beginswith %@", prefix];    
+
+    /* MR_countOfEntitiesWithPredicate: can give stale data, and I haven't been able
+       to fully characterize the problem or find a workaround. */
+    return [[DMFood MR_findAllWithPredicate:p] count] > 0;
 }
 
 @end

@@ -60,6 +60,10 @@
 		63D25E5D15A8018F001C214E /* DMFood.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9CB1530FE6F00309770 /* DMFood.m */; };
 		63D25E5E15A801C9001C214E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6361D9CD1531017F00309770 /* CoreData.framework */; };
 		63D25E5F15A8020E001C214E /* Lastid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6361D9C71530FE0800309770 /* Lastid.xcdatamodeld */; };
+		63D25E6115A808D0001C214E /* DMFoodListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25E6015A808CF001C214E /* DMFoodListTest.m */; };
+		63D25E6215A80D8D001C214E /* DMFoodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF015A143EA001C214E /* DMFoodList.m */; };
+		63D25E6315A80DC8001C214E /* NSMutableArray+DMInPlaceArrayOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DFB15A67BF8001C214E /* NSMutableArray+DMInPlaceArrayOperations.m */; };
+		63D25E6415A80DD0001C214E /* NSString+DMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DFD15A67BF9001C214E /* NSString+DMUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +137,7 @@
 		63D25E1915A7EA76001C214E /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
 		63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReducingToGroupsTest.m; sourceTree = "<group>"; };
 		63D25E5315A7F705001C214E /* DMFoodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFoodTest.m; sourceTree = "<group>"; };
+		63D25E6015A808CF001C214E /* DMFoodListTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFoodListTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +212,8 @@
 				63D25DFD15A67BF9001C214E /* NSString+DMUtilities.m */,
 				6361D9CA1530FE6F00309770 /* DMFood.h */,
 				6361D9CB1530FE6F00309770 /* DMFood.m */,
+				63D25DEF15A143EA001C214E /* DMFoodList.h */,
+				63D25DF015A143EA001C214E /* DMFoodList.m */,
 				6361D9AE1530EA4900309770 /* DMAppDelegate.h */,
 				6361D9AF1530EA4900309770 /* DMAppDelegate.m */,
 				6361D9BB1530EA4900309770 /* DMLookupViewController.h */,
@@ -215,8 +222,6 @@
 				6361D9B51530EA4900309770 /* DMDictationViewController.m */,
 				6361D9FE1535006E00309770 /* DMTokenizingViewController.h */,
 				6361D9FF1535006E00309770 /* DMTokenizingViewController.m */,
-				63D25DEF15A143EA001C214E /* DMFoodList.h */,
-				63D25DF015A143EA001C214E /* DMFoodList.m */,
 				6361DA171537C46800309770 /* DMTextFieldCell.h */,
 				6361DA181537C46800309770 /* DMTextFieldCell.m */,
 				6361D9A61530EA4900309770 /* Supporting Files */,
@@ -295,6 +300,7 @@
 			children = (
 				63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */,
 				63D25E5315A7F705001C214E /* DMFoodTest.m */,
+				63D25E6015A808CF001C214E /* DMFoodListTest.m */,
 				63D25E0B15A7E9E7001C214E /* Supporting Files */,
 			);
 			path = Tests;
@@ -444,10 +450,14 @@
 				63D25E5615A80171001C214E /* MRCoreDataAction.m in Sources */,
 				63D25E5515A8016C001C214E /* MagicalRecordHelpers.m in Sources */,
 				63D25E1115A7E9E7001C214E /* main.m in Sources */,
+				63D25E6415A80DD0001C214E /* NSString+DMUtilities.m in Sources */,
+				63D25E6315A80DC8001C214E /* NSMutableArray+DMInPlaceArrayOperations.m in Sources */,
 				63D25E5115A7F488001C214E /* NSArray+DMReducingToGroups.m in Sources */,
 				63D25E4F15A7F457001C214E /* DMReducingToGroupsTest.m in Sources */,
 				63D25E5D15A8018F001C214E /* DMFood.m in Sources */,
 				63D25E5415A7F705001C214E /* DMFoodTest.m in Sources */,
+				63D25E6215A80D8D001C214E /* DMFoodList.m in Sources */,
+				63D25E6115A808D0001C214E /* DMFoodListTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

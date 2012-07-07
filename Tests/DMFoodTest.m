@@ -14,8 +14,7 @@ BOOL dateIsCurrent(NSDate *date)
 
 - (void)setUp
 {
-    [MagicalRecordHelpers setupCoreDataStack];
-    [DMFood MR_deleteAllMatchingPredicate:[NSPredicate predicateWithValue:YES]];
+    [MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
     DMFood *f = [DMFood MR_createEntity];
     f.name = @"Green Beans";
     f.lastAdded = [NSDate distantPast];
