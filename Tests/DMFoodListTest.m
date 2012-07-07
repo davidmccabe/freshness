@@ -50,4 +50,29 @@
     }];
 }
 
+- (void)testCommit
+{
+    DMFoodList *list = [[DMFoodList alloc] init];
+    [list addObject:@"Foo"];
+    [list addObject:@"Bar"];
+    [list addObject:@"Baz"];
+    [list removeObjectAtIndex:2];
+    
+    [list commit];
+    
+    GHAssertNotNil([DMFood MR_findFirstByAttribute:@"name" withValue:@"Foo"], nil);
+    GHAssertNotNil([DMFood MR_findFirstByAttribute:@"name" withValue:@"Bar"], nil);
+    GHAssertNil   ([DMFood MR_findFirstByAttribute:@"name" withValue:@"Baz"], nil);
+}
+
+- (void)testMergeNameAtIndexWithNameAtIndex
+{
+    DMFoodList *list = [[DMFoodList alloc] init];
+    [list addObject:@"Foo"];
+    [list addObject:@"Bar"];
+    [list mergeNameAtIndex:0 withNameAtIndex:1];
+    GHAssertTrue([list count] == 1, nil);
+    GHAssertEqualObjects([list objectAtIndex:0], @"Foo Bar", nil);
+}
+
 @end
