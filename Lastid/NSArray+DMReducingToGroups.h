@@ -4,5 +4,4 @@
 
 @interface NSArray (DMReducingToGroups)
 - (NSArray *)DM_arrayByReducingToGroupsWithFold:(id(^)(id,id))fold predicate:(BOOL(^)(id))predicate;
-- (void)cheapAssUnitTest;
 @end

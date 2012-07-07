@@ -46,6 +46,8 @@
 		63D25E0F15A7E9E7001C214E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63D25E0D15A7E9E7001C214E /* InfoPlist.strings */; };
 		63D25E1115A7E9E7001C214E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25E1015A7E9E7001C214E /* main.m */; };
 		63D25E1A15A7EA76001C214E /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D25E1915A7EA76001C214E /* GHUnitIOS.framework */; };
+		63D25E4F15A7F457001C214E /* DMReducingToGroupsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */; };
+		63D25E5115A7F488001C214E /* NSArray+DMReducingToGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D25DF915A67BF8001C214E /* NSArray+DMReducingToGroups.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +119,7 @@
 		63D25E1015A7E9E7001C214E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		63D25E1215A7E9E7001C214E /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		63D25E1915A7EA76001C214E /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReducingToGroupsTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +279,7 @@
 		63D25E0A15A7E9E7001C214E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				63D25E4E15A7F457001C214E /* DMReducingToGroupsTest.m */,
 				63D25E0B15A7E9E7001C214E /* Supporting Files */,
 			);
 			path = Tests;
@@ -416,6 +420,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D25E1115A7E9E7001C214E /* main.m in Sources */,
+				63D25E5115A7F488001C214E /* NSArray+DMReducingToGroups.m in Sources */,
+				63D25E4F15A7F457001C214E /* DMReducingToGroupsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +590,7 @@
 				63D25E1815A7E9E7001C214E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
