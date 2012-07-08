@@ -3,10 +3,6 @@
 #import "DMFood.h"
 #import "DMFoodList.h"
 
-@interface DMFoodList (PrivateMethodsNeededForTesting)
-@property (strong, nonatomic) NSMutableArray *foodNames;
-@end
-
 @interface DMFoodListTest : GHTestCase
 @end
 
@@ -31,7 +27,10 @@
     void (^testCase)(NSString *, NSArray *) = ^(NSString *string, NSArray *expected) {
         DMFoodList *list = [[DMFoodList alloc] init];
         [list addFoodsFromString:string];
-        GHAssertEqualObjects(list.foodNames, expected, nil);
+        GHAssertTrue([list count] == [expected count], nil);
+        for (int i = 0; i < [list count]; i++) {
+            GHAssertEqualObjects([list objectAtIndex:i], [expected objectAtIndex:i], nil);
+        }
     };
 
     // Test existing names, non-existing names, and names that begin with
