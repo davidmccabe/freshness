@@ -11,7 +11,7 @@
 
 - (NSString *)DM_stringWithFirstCharacter
 {
-    return [self substringToIndex:1];
+    return [self substringWithRange:[self rangeOfComposedCharacterSequenceAtIndex:0]];
 }
 
 @end
