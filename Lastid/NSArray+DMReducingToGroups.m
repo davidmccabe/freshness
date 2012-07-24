@@ -20,7 +20,7 @@
 {
     if (self.count == 0) return [NSArray array];
     
-	NSMutableArray *result = [NSMutableArray array];
+    NSMutableArray *result = [NSMutableArray array];
 
     id group = [self objectAtIndex:0];
     for (int i = 1; i < self.count; i++) {

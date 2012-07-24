@@ -54,14 +54,16 @@
 
 # pragma mark ACTIONS
 
-- (IBAction)donePressed:(id)sender {
+- (IBAction)donePressed:(id)sender
+{
     [self.navigationController popToRootViewControllerAnimated:YES];
     
     [self.entries commit];
     [[NSManagedObjectContext MR_defaultContext] save:NULL];
 }
 
-- (IBAction)addPressed:(id)sender {
+- (IBAction)addPressed:(id)sender
+{
     [self.entries addObject:@""];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.entries count] - 1 inSection:0];
@@ -150,11 +152,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	DMTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
-	
-	cell.textField.text = [self.entries objectAtIndex:indexPath.row];
+    DMTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TokenizingCell"];
+
+    cell.textField.text = [self.entries objectAtIndex:indexPath.row];
     cell.textField.tag = indexPath.row;
-    
+
     return cell;
 }
 

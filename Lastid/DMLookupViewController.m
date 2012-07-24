@@ -56,11 +56,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"FoodCell"];
 
     DMFood *food = [self.frc objectAtIndexPath:indexPath];
     cell.textLabel.text = food.name;
-	cell.detailTextLabel.text = [self labelStringForDate:food.lastAdded];
+    cell.detailTextLabel.text = [self labelStringForDate:food.lastAdded];
     
     return cell;
 }
@@ -83,7 +83,8 @@
     return array;
 }
 
-- (IBAction)sortControlDidChange:(id)sender {
+- (IBAction)sortControlDidChange:(id)sender
+{
     self.sortOrder = [[[self class] sortOrdersArray] objectAtIndex:[sender selectedSegmentIndex]];
     [[NSUserDefaults standardUserDefaults] setObject:self.sortOrder forKey:@"inventorySortOrder"];
     [self setupFetchedResults];
